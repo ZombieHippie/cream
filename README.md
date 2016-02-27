@@ -7,6 +7,10 @@
 
 ```
 git clone https://github.com/ZombieHippie/cream
+
+cd cream
+
+npm install
 ```
 
 ## Debugging
