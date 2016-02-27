@@ -3,7 +3,12 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/:id', function(req, res, next) {
-  res.send('Welcome to ' + req.params.id + '!');
+  var rid = req.params.id
+  res.render('room', {
+    title: rid + ' - Cream Room',
+    roomId: rid,
+    isAdmin: true
+  });
 });
 
 router.get('/', function(req,res,next) {
