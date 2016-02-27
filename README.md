@@ -1,12 +1,21 @@
 # Cream
 
+## Installation
+
+* Install git from git-scm
+* Install node
+
+```
+git clone https://github.com/ZombieHippie/cream
+```
+
 ## Debugging
 
 Use nodemon to restart server on changes
 
 Install nodemon using `npm install -g nodemon`
 
-use nodeom with:
+use nodemon with:
 
 ```
 DEBUG=cream:* nodemon
