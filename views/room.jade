@@ -1,0 +1,11 @@
+extends layout
+
+block head
+  link(rel='stylesheet', href='/stylesheets/room.css')
+
+block content
+  .room-top-bar
+    .room-title= roomId
+    if isAdmin
+      .is-admin
+  
