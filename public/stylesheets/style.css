@@ -5,7 +5,9 @@ body {
 }
 body .page {
   padding: 50px;
+  text-align:center;
   background: white;
+  background-image: url('background.gif');
 }
 
 body footer {
