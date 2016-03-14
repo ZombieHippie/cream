@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var rooms = {
-  "hello": {
+  "HEY": {
     private: false,
     password: "creamy",
     capacity: 3
