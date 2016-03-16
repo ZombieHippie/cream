@@ -3,6 +3,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #444;
 }
+
 body .page {
   padding: 50px;
   text-align:center;
@@ -13,11 +14,40 @@ body .page {
 body footer {
   padding: 50px;
   color: white;
+  height:10%;
 }
 
 a {
   color: #00B7FF;
 }
+
+caption {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#cream-table {
+  width: 70%;
+  height: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-collapse: collapse;
+  background: white;
+  text-align: left;
+}
+
+th {
+  background: cyan;
+  border-bottom: 1px solid black;
+}
+
+th, td {
+  border-left: 1px solid black;
+  padding: 5px;
+}
+
 #popup-create-room {
   position: absolute;
   top: 1em;

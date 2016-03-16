@@ -11,12 +11,14 @@ var rooms = {
 
 router.post('/create', function (req, res) {
   // check if name is used
-
+  // instead we could generate a room id for the user
+    //then room names do not have to be unique
   // then
   rooms[req.body.Name] = {
     private: req.body.Private === "true",
     password: req.body.Password,
   }
+  //add newly created room to #cream-table
   res.redirect('/room/' + req.body.Name)
 })
 
