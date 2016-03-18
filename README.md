@@ -17,10 +17,8 @@ npm install
 
 Use nodemon to restart server on changes
 
-Install nodemon using `npm install -g nodemon`
-
 use nodemon with:
 
 ```
-DEBUG=cream:* nodemon
+DEBUG=cream:* npm run dev
 ```
