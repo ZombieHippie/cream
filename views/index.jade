@@ -2,7 +2,8 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  //- p Welcome to #{title}
+  p Prepare to taste the white hot cream of an 8th grade boy!
 
   button(onclick= "window.location.href = '/about'") About Us
   button(onclick= "showCreateRoom()") Create Room
@@ -23,6 +24,46 @@ block content
         label Password
         input(type="password" name="Password")
       input(type="Submit" value="Create")
+
+  table#cream-table
+    caption Available Creams
+    thead
+      th Room ID
+      th Room Name
+      th Type
+      th Capacity
+    tbody
+      tr.cream-table-row
+        td 129031039
+        td the_room
+        td Private
+        td 2/6
+      tr.cream-table-row
+        td 34hi2iu12
+        td another_room
+        td Public
+        td 4/6
+      tr.cream-table-row
+        td 3hsdkja88
+        td we_lit
+        td Public
+        td 6/6
+      tr.cream-table-row
+        td 2382jhkjD
+        td lonley_loner_on_the_lonely_road
+        td Private
+        td 1/6
+      tr.cream-table-row
+        td 171717tQQ
+        td no_name
+        td Public
+        td 3/6
+      tr.cream-table-row
+        td FGF127199
+        td we_not_as_lit
+        td Public
+        td 5/6
+
 block javascript
   script(src="/script/jquery-2.2.1.js")
   script(src="/script/clientLobby.js")
