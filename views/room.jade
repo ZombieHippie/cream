@@ -1,11 +1,17 @@
 extends layout
 
 block head
-  link(rel='stylesheet', href='/stylesheets/room.css')
+  link(rel='stylesheet' href='/stylesheets/room.css')
+  link(rel='stylesheet' href='/easyrtc-api/easyrtc.css')
 
 block content
   .room-top-bar
-    .room-title= roomId
-    if isAdmin
-      .is-admin
-  include test      
+    .room-title= room_id
+    if is_private
+      .is-private [ Private ]
+
+block javascript
+  script(src='/socketio-api/socket.io.js')
+  script(src='/easyrtc-api/adapter.js')
+  script(src='/easyrtc-api/easyrtc.js')
+  script(src='/script/clientRoom.js')
