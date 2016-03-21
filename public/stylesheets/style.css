@@ -20,7 +20,9 @@ a {
 }
 #popup-create-room {
   border-radius: 3em;
-  position: relative;
+  position: absolute;
+  margin-left:30%;
+
   top: 1em;
   left: 1em;
   right: 1em;
