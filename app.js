@@ -12,6 +12,7 @@ var about = require('./routes/about');
 
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -23,6 +24,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/easyrtc-api', express.static(path.join(__dirname, 'node_modules/easyrtc/api')));
+app.use('/socketio-api', express.static(path.join(__dirname, '/node_modules/socket.io-client/')));
 
 app.use('/lobby', lobby);
 app.use('/room', room);
@@ -59,6 +62,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
