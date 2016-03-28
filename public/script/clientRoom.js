@@ -18,3 +18,13 @@ easyrtc.joinRoom(
     console.log("fail", arguments)
   }
 )
+
+easyrtc.leaveRoom(
+  room_id,
+  function SuccessfulExit () {
+    console.log("EXIT SUCCESS", arguments)
+  },
+  function FailfulExit () {
+    console.log("EXIT FAILURE", arguments)
+  }
+)
