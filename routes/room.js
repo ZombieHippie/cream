@@ -23,7 +23,7 @@ router.post('/create', function (req, res) {
   res.redirect('/room/' + req.body.Name)
 })
 
-/* GET users listing. */
+/* GET users listing */
 router.get('/login/:id', function(req, res, next) {
   var rid = req.params.id
   // TODO use rid to lookup connection information of peers
@@ -43,7 +43,6 @@ router.get('/login/:id', function(req, res, next) {
 
 });
 
-/* GET users listing. */
 router.get('/:id', function(req, res, next) {
   var rid = req.params.id
   // TODO use rid to lookup connection information of peers
@@ -53,6 +52,8 @@ router.get('/:id', function(req, res, next) {
 
   if (room == null) {
     res.render("error", { message: "Room doesn't exist", error:{}})
+  } else if (room.private) {
+    res.redirect("/room/login/" + rid)
   } else {
     res.render('room', {
       title: rid + ' - Cream Room',
@@ -63,6 +64,7 @@ router.get('/:id', function(req, res, next) {
 
 });
 
+/* POST */
 router.post('/:id', function(req, res, next) {
   var rid = req.params.id
   var password = req.body.Password
