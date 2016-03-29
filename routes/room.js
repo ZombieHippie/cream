@@ -24,6 +24,26 @@ router.post('/create', function (req, res) {
 })
 
 /* GET users listing. */
+router.get('/login/:id', function(req, res, next) {
+  var rid = req.params.id
+  // TODO use rid to lookup connection information of peers
+  // if rid does not match an available connection, send to lobby with message
+  // if rid does match send proper information
+  var room = database.rooms[rid]
+
+  if (room == null) {
+    res.render("error", { message: "Room doesn't exist", error:{}})
+  } else {
+    res.render('login', {
+      title: rid + ' - Cream Room',
+      room_id: rid,
+      is_private: room.private,
+    });
+  }
+
+});
+
+/* GET users listing. */
 router.get('/:id', function(req, res, next) {
   var rid = req.params.id
   // TODO use rid to lookup connection information of peers
@@ -33,7 +53,6 @@ router.get('/:id', function(req, res, next) {
 
   if (room == null) {
     res.render("error", { message: "Room doesn't exist", error:{}})
-
   } else {
     res.render('room', {
       title: rid + ' - Cream Room',
@@ -43,6 +62,29 @@ router.get('/:id', function(req, res, next) {
   }
 
 });
+
+router.post('/:id', function(req, res, next) {
+  var rid = req.params.id
+  var password = req.body.Password
+  console.log(password)
+  // TODO use rid to lookup connection information of peers
+  // if rid does not match an available connection, send to lobby with message
+  // if rid does match send proper information
+  var room = database.rooms[rid]
+
+  if (room == null) {
+    res.render("error", { message: "Room doesn't exist", error:{}})
+  } else if (password != room.password) {
+    res.redirect("/room/login/" + rid + "?message=Password is incorrect!")
+  } else {
+    res.render('room', {
+      title: rid + ' - Cream Room',
+      room_id: rid,
+      is_private: room.private,
+    });
+  }
+
+})
 
 router.get('/', function(req,res,next) {
   // redirect to the lobby
