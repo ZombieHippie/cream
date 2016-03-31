@@ -17,7 +17,10 @@ block content
       each room, index in rooms
         li.list-group-item
           span.label.label-default.label-pill.pull-xs-right=room.capacity
-          a(href='/room/' + index)= index
+          if room.private
+            a(href='/room/login/' + index)= index
+          else
+            a(href='/room/' + index)= index
 
   #popup-create-room
     form(action="/room/create" method="post")
