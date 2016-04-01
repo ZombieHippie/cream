@@ -1,7 +1,11 @@
 
 #demoContainer
   #connectControls
+    button#connectButton(onclick='connect()') Connect
     button#hangupButton(disabled='disabled', onclick='hangup()') Hangup
+    #iam Not yet connected...
+    h3  Video sources
+    #videoSrcBlk
     br
     strong Connected users:
     #otherClients
