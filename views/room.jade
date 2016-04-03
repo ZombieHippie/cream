@@ -9,10 +9,10 @@ block content
     .room-title= room_id
     if is_private
       .is-private [ Private ]
-  include easyrtc-demo-multistream
-
+  include dynamic-view
+  
 block javascript
   script(src='/socket.io/socket.io.js')
   script(src='/easyrtc-api/adapter.js')
   script(src='/easyrtc-api/easyrtc.js')
-  script(src="/script/easyrtc-multistream-demo.js")
+  script(src="/script/dynamic-view.js")
