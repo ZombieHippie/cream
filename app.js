@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/easyrtc-api', express.static(path.join(__dirname, 'node_modules/easyrtc/api')));
-app.use('/socketio-api', express.static(path.join(__dirname, '/node_modules/socket.io-client/')));
+app.use('/socketio-api', express.static(path.join(__dirname, '/node_modules/socket.io/')));
 
 app.use('/lobby', lobby);
 app.use('/room', room);
