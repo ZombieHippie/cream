@@ -1,20 +1,19 @@
 body {
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #444;
+  background-image: url('bg.jpg');
 }
 body .page {
   padding: 50px;
   text-align:center;
-  background: white;
-  background-image: url('background.gif');
-}
-
-body footer {
-  padding: 50px;
-  color: white;
+  background: black;
+  background-image: url('bg.jpg');
 }
 
 a {
   color: #00B7FF;
+}
+
+h1 {
+  color: #66FFFF;
 }
