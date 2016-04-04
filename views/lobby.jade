@@ -30,10 +30,18 @@ block content
         input(type="text" name="Name")
       .public-field
         label Capacity
-        input(type="number" name="Capacity")
+        input(type="number" list='Capacity' name="Capacity")
+        datalist#Capacity
+          option(value='2')
+          option(value='3') 
+          option(value='4')
+          option(value='5') 
+          option(value='6')       
+        //input(type="number" name="Capacity")
       .public-field
         label Public
-        input(type="radio" name="Private" value="false" onclick="togglePublic(this);")
+        input(type="radio" name="Private" value="false" checked="checked" onclick="togglePublic(this);")
+        | &nbsp &nbsp &nbsp &nbsp;
         label Private
         input(type="radio" name="Private" value="true" onclick="togglePrivate(this);")
       .public-field

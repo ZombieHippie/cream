@@ -469,7 +469,7 @@ function updateMuteImage(toggle) {
             isMuted = !isMuted;
             videoObject.muted = isMuted;
         }
-        muteButton.src = isMuted?"images/button_unmute.png":"images/button_mute.png";
+        muteButton.src = isMuted?"../images/button_unmute.png":"../images/button_mute.png";
     }
     else {
         muteButton.style.display = "none";

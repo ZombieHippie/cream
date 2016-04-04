@@ -7,6 +7,7 @@ function showCreateRoom() {
   })
 }
 
+//inefficient toggling of radio buttons - Cameron
 function togglePublic (rdo) {
   document.getElementById("user_pass").disabled = true;
 }
