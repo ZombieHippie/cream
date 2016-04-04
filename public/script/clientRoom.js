@@ -5,7 +5,6 @@ easyrtc.connect()
 
 var room_id = $(".room-title").text()
 var roomParameters = {
-  fuckYou: true
 }
 
 easyrtc.joinRoom(
