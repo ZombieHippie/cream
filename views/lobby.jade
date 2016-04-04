@@ -5,7 +5,7 @@ block head
 
 block content
   h1= title
-  p Welcome to #{title}
+  // p Welcome to #{title}
 
   p
     button.btn.btn-info(onclick= "window.location.href = '/about'") About Us
@@ -17,14 +17,14 @@ block content
       each room, index in rooms
         li.list-group-item
           span.label.label-default.label-pill.pull-xs-right=room.capacity
-          if room.private
+          if room.Private
             a(href='/room/login/' + index)= index
           else
             a(href='/room/' + index)= index
 
   #popup-create-room
     form(action="/room/create" method="post")
-      h1 Create Room
+      h2 Create Room
       .public-field
         label Name
         input(type="text" name="Name")
@@ -32,13 +32,13 @@ block content
         label Capacity
         input(type="number" name="Capacity")
       .public-field
-        label Private
-        input(type="radio" name="Private" value="true")
         label Public
-        input(type="radio" name="Private" value="false")
+        input(type="radio" name="Private" value="false" onclick="togglePublic(this);")
+        label Private
+        input(type="radio" name="Private" value="true" onclick="togglePrivate(this);")
       .public-field
         label Password
-        input(type="password" name="Password")
+        input(type="password" name="Password" disabled='true' id="user_pass")
       button.btn.btn-primary(type="Submit") Create
       a.btn.btn-secondary(href="#" role="button") Cancel
 block javascript

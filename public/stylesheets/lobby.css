@@ -4,6 +4,14 @@ div#popup-create-room:target {
   display: block;
 }
 
+h1 {
+  color: #66FFFF;
+}
+
+h2 {
+  color: #212b31;
+}
+
 #popup-create-room {
   border-radius: 3em;
   position: absolute;
