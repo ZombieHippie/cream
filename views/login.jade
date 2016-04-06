@@ -5,7 +5,7 @@ block head
 
 block content
   .room-top-bar
-    = ' ' + room_id + ' '
+    = room_id + ' '
     | is a private room
     br
     | Please enter the password below
@@ -13,7 +13,7 @@ block content
     .public-field
       label Password
       input(type="password" name="Password")
-      button.btn.btn-primary(onclick= "window.location.href = '/room/' + room_id") Login
+      button.btn.btn-primary(type="submit") Login
   script.
     function getUrlVars()
     {
