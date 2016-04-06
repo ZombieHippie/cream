@@ -1,10 +1,19 @@
 extends layout
 
+block head
+  link(rel='stylesheet' href='/stylesheets/login.css')
+
 block content
+  .room-top-bar
+    = ' ' + room_id + ' '
+    | is a private room
+    br
+    | Please enter the password below
   form(action=("/room/" + room_id) method="post")
     .public-field
       label Password
       input(type="password" name="Password")
+      button.btn.btn-primary(onclick= "window.location.href = '/room/' + room_id") Login
   script.
     function getUrlVars()
     {
@@ -23,3 +32,4 @@ block content
       message = decodeURIComponent(message)
       document.write(message)
     }
+

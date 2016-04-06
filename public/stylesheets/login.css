@@ -1,0 +1,26 @@
+.room-top-bar {
+  width: 100%;
+  padding: 1em;
+  background: #111;
+  color: white;
+  text-align: center;
+}
+
+.room-top-bar .room-title {
+  font-size: 16px;
+  display: inline-block;
+}
+
+label {
+  font-size: 16px;
+  padding: 1em;
+  color: white;
+}
+
+form {
+  padding: 1em;
+}
+
+button.btn.btn-primary {
+  margin: 1em;
+}
