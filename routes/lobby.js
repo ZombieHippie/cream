@@ -4,9 +4,18 @@ var database = require('../database')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('lobby', {
-    title: 'Cream Stream lobby',
-    rooms: database.rooms
+  database.Room
+  .find()
+  .sort('-creationDate')
+  .exec((error, rooms) => {
+    if (error) {
+      next(error)
+    } else {
+      res.render('lobby', {
+        title: 'Cream Stream lobby',
+        rooms: rooms
+      })
+    }
   })
 })
 

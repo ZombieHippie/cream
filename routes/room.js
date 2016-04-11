@@ -3,89 +3,130 @@ var router = express.Router();
 var database = require('../database')
 
 
-router.post('/create', function (req, res) {
+router.post('/create', function (req, res, next) {
   // check if name is used
-  req.body.Name = req.body.Name.replace(/\W+/g, '-')
-  if (database.rooms[req.body.Name] != null) {
-    return res.render("error", {
-      message: "Sorry there is already a room with the name: '" + req.body.Name + "'",
-      error: {}
-    })
-  }
+  var name = req.body.Name
+  var slug = name.replace(/\W+/g, '-')
 
-  // then
-  database.rooms[req.body.Name] = {
-    private: req.body.Private === "true",
-    password: req.body.Password,
-    capacity: parseInt(req.body.Capacity),
-    peers: []
-  }
-  res.redirect('/room/' + req.body.Name)
+  database.Room
+  .findOne({ slug: slug })
+  .exec((error, doc) => {
+    if (error) return next(error)
+
+    // Make sure room with this name does not exist
+    if (doc != null) {
+      return res.render("error", {
+        message: "Sorry there is already a room with the name: '" + req.body.Name + "'",
+        error: {}
+      })
+    } else {
+      // then
+      var password = req.body.Password
+      var roomDoc = new database.Room({
+        slug: slug,
+        name: name,
+        private: req.body.Private === "true",
+        capacity: parseInt(req.body.Capacity),
+        creationDate: new Date(),
+      })
+
+      roomDoc.setPassword(password, (error, doc) => {
+        if (error) return next(error)
+
+        // Save the doc into the database
+        doc.save((error) => {
+          if (error) return next(error)
+
+          res.redirect('/room/' + req.body.Name)
+        })
+      })
+
+    }
+  })
+
 })
 
 /* GET users listing */
-router.get('/login/:id', function(req, res, next) {
-  var rid = req.params.id
-  // TODO use rid to lookup connection information of peers
-  // if rid does not match an available connection, send to lobby with message
-  // if rid does match send proper information
-  var room = database.rooms[rid]
+router.get('/login/:slug', function(req, res, next) {
+  var slug = req.params.slug
+  
+  database.Room
+  .find({ slug: slug })
+  .exec((error, roomDoc) => {
+    if (error) return next(error)
 
-  if (room == null) {
-    res.render("error", { message: "Room doesn't exist", error:{}})
-  } else {
-    res.render('login', {
-      title: rid + ' - Cream Room',
-      room_id: rid,
-      is_private: room.private,
-    });
-  }
+    if (roomDoc == null) {
+      res.render("error", { message: "Room doesn't exist", error:{}})
+    
+    } else {
+      res.render('login', {
+        title: roomDoc.name + ' - Cream Room',
+        room_id: roomDoc.slug,
+        is_private: roomDoc.private,
+      });
+    }
+  })
 
 });
 
-router.get('/:id', function(req, res, next) {
-  var rid = req.params.id
-  // TODO use rid to lookup connection information of peers
-  // if rid does not match an available connection, send to lobby with message
-  // if rid does match send proper information
-  var room = database.rooms[rid]
+router.get('/:slug', function(req, res, next) {
+  var slug = req.params.slug
+  // TODO use slug to lookup connection information of peers
+  
+  database.Room
+  .find({ slug: slug })
+  .exec((error, roomDoc) => {
 
-  if (room == null) {
-    res.render("error", { message: "Room doesn't exist", error:{}})
-  } else if (room.private) {
-    res.redirect("/room/login/" + rid)
-  } else {
-    res.render('room', {
-      title: rid + ' - Cream Room',
-      room_id: rid,
-      is_private: room.private,
-    });
-  }
+    if (roomDoc == null) {
+      res.render("error", { message: "Room doesn't exist", error:{}})
+
+    } else if (roomDoc.private) {
+      res.redirect("/room/login/" + rid)
+
+    } else {
+      res.render('room', {
+        title: roomDoc.name + ' - Cream Room',
+        room_id: roomDoc.slug,
+        is_private: roomDoc.private,
+      })
+    }
+  })
 
 });
 
 /* POST */
-router.post('/:id', function(req, res, next) {
-  var rid = req.params.id
+router.post('/:slug', function(req, res, next) {
+  var slug = req.params.slug
   var password = req.body.Password
-  console.log(password)
-  // TODO use rid to lookup connection information of peers
-  // if rid does not match an available connection, send to lobby with message
-  // if rid does match send proper information
-  var room = database.rooms[rid]
+  // TODO use slug to lookup connection information of peers
+  
+  database.Room
+  .find({ slug: slug })
+  .exec((error, roomDoc) => {
+    if (roomDoc == null) {
+      res.render("error", { message: "Room doesn't exist", error:{}})
 
-  if (room == null) {
-    res.render("error", { message: "Room doesn't exist", error:{}})
-  } else if (password != room.password) {
-    res.redirect("/room/login/" + rid + "?message=Password is incorrect!")
-  } else {
-    res.render('room', {
-      title: rid + ' - Cream Room',
-      room_id: rid,
-      is_private: room.private,
-    });
-  }
+    } else {
+      roomDoc.verifyPassword(
+        password,
+        (error, passValid) => {
+          if (error) return next(error)
 
+          if (!passValid) {
+            res.redirect("/room/login/" + slug + "?message=Password is incorrect!")
+
+          } else {
+            res.render('room', {
+              title: roomDoc.name + ' - Cream Room',
+              room_id: roomDoc.slug,
+              is_private: roomDoc.private,
+            })
+          }
+        }
+      )
+    }
+  })
+  
 })
 
 router.get('/', function(req,res,next) {

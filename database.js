@@ -42,6 +42,7 @@ var roomSchema = mongoose.Schema({
   hash: String,
   salt: String,
   capacity: Number,
+  creationDate: Date,
 })
 
 // callback(error: Error, document: Room)
@@ -50,7 +51,7 @@ function setPassword (password, callback) {
     if (error) return callback(error)
     this.set('salt', salt)
     this.set('hash', hash)
-    this.save(callback)
+    callback(null, this)
   })
 }
 

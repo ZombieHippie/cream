@@ -22,3 +22,9 @@ use nodemon with:
 ```
 DEBUG=cream:* npm run dev
 ```
+
+## Environment
+
+`MONGODB_HOST`
+
+`MONGODB_DB`
