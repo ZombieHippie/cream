@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var database = require('../database')
 
-
 router.post('/create', function (req, res, next) {
   // check if name is used
   var name = req.body.Name
@@ -30,7 +29,7 @@ router.post('/create', function (req, res, next) {
         creationDate: new Date(),
       })
 
-      roomDoc.setPassword(password, (error, doc) => {
+      roomDoc.setPassword(password || "", (error, doc) => {
         if (error) return next(error)
 
         // Save the doc into the database

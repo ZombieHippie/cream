@@ -34,7 +34,7 @@ exports.hash = function (pwd, salt, callback) {
   else {
     callback = salt
     crypto.randomBytes(len, function (err, salt) {
-      return callback(err) if (err)
+      if (err) return callback(err)
       salt = salt.toString('base64')
       crypto.pbkdf2(
         pwd,
@@ -42,7 +42,7 @@ exports.hash = function (pwd, salt, callback) {
         iterations,
         len,
         function (err, hash) {
-          return callback(err) if (err)
+          if (err) return callback(err)
           callback(null, salt, hash.toString('base64'))
         }
       )
