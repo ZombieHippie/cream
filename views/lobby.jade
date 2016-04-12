@@ -14,13 +14,13 @@ block content
 
   div
     ul.list-group
-      each room, index in rooms
+      each room in rooms
         li.list-group-item
           span.label.label-default.label-pill.pull-xs-right=room.capacity
-          if room.Private
-            a(href='/room/login/' + index)= index
+          if room.private
+            a(href='/room/login/' + room.slug)= room.name
           else
-            a(href='/room/' + index)= index
+            a(href='/room/' + room.slug)= room.name
 
   #popup-create-room
     form(action="/room/create" method="post")
