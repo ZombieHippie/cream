@@ -50,7 +50,7 @@ router.get('/login/:slug', function(req, res, next) {
   var slug = req.params.slug
   
   database.Room
-  .find({ slug: slug })
+  .findOne({ slug: slug })
   .exec((error, roomDoc) => {
     if (error) return next(error)
 
@@ -60,7 +60,7 @@ router.get('/login/:slug', function(req, res, next) {
     } else {
       res.render('login', {
         title: roomDoc.name + ' - Cream Room',
-        room_id: roomDoc.slug,
+        room: roomDoc,
         is_private: roomDoc.private,
       });
     }
@@ -73,7 +73,7 @@ router.get('/:slug', function(req, res, next) {
   // TODO use slug to lookup connection information of peers
   
   database.Room
-  .find({ slug: slug })
+  .findOne({ slug: slug })
   .exec((error, roomDoc) => {
 
     if (roomDoc == null) {
@@ -100,7 +100,7 @@ router.post('/:slug', function(req, res, next) {
   // TODO use slug to lookup connection information of peers
   
   database.Room
-  .find({ slug: slug })
+  .findOne({ slug: slug })
   .exec((error, roomDoc) => {
     if (roomDoc == null) {
       res.render("error", { message: "Room doesn't exist", error:{}})
@@ -110,6 +110,8 @@ router.post('/:slug', function(req, res, next) {
         password,
         (error, passValid) => {
           if (error) return next(error)
+
+          console.log("PASSWORD", password, passValid)
 
           if (!passValid) {
             res.redirect("/room/login/" + slug + "?message=Password is incorrect!")

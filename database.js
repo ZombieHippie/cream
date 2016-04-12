@@ -60,9 +60,9 @@ function setPassword (password, callback) {
 function verifyPassword (password, callback) {
   var salt = this.get('salt')
   var hash = this.get('hash')
-  passwordHash(password, salt, (error, hash) => {
+  passwordHash(password, salt, (error, genhash) => {
     if (error) return callback(error)
-    var passValid = hash === hash
+    var passValid = hash === genhash
     callback(null, passValid)
   })
 }

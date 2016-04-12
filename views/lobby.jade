@@ -13,14 +13,25 @@ block content
     button.btn.btn-primary(onclick= "window.location.href = '#popup-create-room'") Create Room
 
   div
-    ul.list-group
-      each room in rooms
-        li.list-group-item
-          span.label.label-default.label-pill.pull-xs-right=room.capacity
-          if room.private
-            a(href='/room/login/' + room.slug)= room.name
-          else
-            a(href='/room/' + room.slug)= room.name
+    table.table.table-bordered(style="background: white")
+      thead
+        tr
+          th(style="width: 70%") Name
+          th Capacity
+          th Private
+      tbody
+        each room in rooms
+          tr(class=(room.capacity > 1 ? '': 'table-warning'))
+            td(style="width: 70%")
+              if room.private
+                a(href='/room/login/' + room.slug)= room.name
+              else
+                a(href='/room/' + room.slug)= room.name
+            td
+              .label.label-default.label-pill=room.capacity
+            td
+              if room.private
+                span &#128274;
 
   #popup-create-room
     form(action="/room/create" method="post")

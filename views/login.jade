@@ -5,15 +5,15 @@ block head
 
 block content
   .room-top-bar
-    = ' ' + room_id + ' '
+    = ' ' + room.name + ' '
     | is a private room
     br
     | Please enter the password below
-  form(action=("/room/" + room_id) method="post")
+  form(action=("/room/" + room.slug) method="post")
     .public-field
       label Password
       input(type="password" name="Password")
-      button.btn.btn-primary(onclick= "window.location.href = '/room/' + room_id") Login
+      button.btn.btn-primary Login
   script.
     function getUrlVars()
     {

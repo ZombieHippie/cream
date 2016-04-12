@@ -4,6 +4,7 @@ var database = require('../database')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log("SORT BY", req.query.sort)
   database.Room
   .find()
   .sort('-creationDate')
