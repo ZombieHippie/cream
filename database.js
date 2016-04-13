@@ -16,17 +16,29 @@ function connect (callback) {
     setTimeout(callback, 0, connected_db)
 
   } else {
-    var db = mongoose.connection
-    // Setting up and connecting to MongoDB
-    console.log('mongodb connecting to ' + mconn)
-    mongoose.connect(mconn, console.log.bind(console, "MONGODB CONNECTION"))
-    db.on('all', console.log.bind(console, 'MONGODB_VERBOSE'))
-    db.on('error', console.error.bind(console))//, 'mongodb connection error:'))
-    db.once('open', function MongooseConnectionCallback () {
-      connected_db = db
-      console.log('mongodb connected!')
-      if (callback) callback(db)
-    })
+    function ConnectMongoDB () {
+      var db = mongoose.connection
+      // Setting up and connecting to MongoDB
+      console.log('mongodb connecting to ' + mconn)
+      mongoose.connect(mconn, console.log.bind(console, "MONGODB CONNECTION"))
+      db.on('all', console.log.bind(console, 'MONGODB_VERBOSE'))
+      db.on('error', console.error.bind(console))//, 'mongodb connection error:'))
+      db.once('open', function MongooseConnectionCallback () {
+        connected_db = db
+        if (mongoose.isMocked) {
+          console.log("MongoDB is being MOCKED!")
+        }
+        console.log('mongodb connected!')
+        if (callback) callback(db)
+      })
+    }
+
+    if (process.env.MOCKDB) {
+      var mockgoose = require('mockgoose')
+      mockgoose(mongoose).then(ConnectMongoDB)
+    } else {
+      ConnectMongoDB()
+    }
   }
 }
 
