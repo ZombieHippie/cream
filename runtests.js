@@ -45,21 +45,24 @@ app_child.on('close', function(code) {
 
 process.env.APP_PORT = app_port
 
+setTimeout(StartNightWatch, 5000)
 
-var nw_cmd = node_cmd
-var nw_js = path.join(__dirname, 'node_modules/nightwatch/bin', 'runner.js')
-var nw_args = [nw_js, '--config=nightwatch.js']
+function StartNightWatch () {
+  var nw_cmd = node_cmd
+  var nw_js = path.join(__dirname, 'node_modules/nightwatch/bin', 'runner.js')
+  var nw_args = [nw_js, '--config=nightwatch.js']
 
-var nw_child = proc.spawn(nw_cmd, nw_args, {
-  stdio: 'inherit',
-  cwd: __dirname,
-  env: {
-    'APP_PORT': app_port,
-  }
-})
+  var nw_child = proc.spawn(nw_cmd, nw_args, {
+    stdio: 'inherit',
+    cwd: __dirname,
+    env: {
+      'APP_PORT': app_port,
+    }
+  })
 
-nw_child.on('close', function(code) {
-  app_child.kill()
-  mongod_child.kill()
-  process.exit(code)
-})
+  nw_child.on('close', function(code) {
+    app_child.kill()
+    mongod_child.kill()
+    process.exit(code)
+  })  
+}
