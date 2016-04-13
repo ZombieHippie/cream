@@ -12,11 +12,8 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "sudo aptitude -y -q install unzip chromium-browser"
   # set the xvfb screen size to 1280x1024x16
-  - "echo $TRAVIS_NODE_VERSION"
-  - "echo $(nvm which $TRAVIS_NODE_VERSION)"
-  - "echo $(which firefox)"
   - "export NODE_EXEC=$(nvm which $TRAVIS_NODE_VERSION)"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
-  - sleep 5 # give xvfb some time to start
+  - sleep 10 # give xvfb some time to start
 
 script: npm test
