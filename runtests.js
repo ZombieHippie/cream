@@ -17,7 +17,7 @@ proc.spawn = function debugSpawn() {
 var mongodb_port = '17010'
 var app_port = '17011'
 
-var mongod_child = require('./mongod-dev-child.js').start(mongodb_port)
+var mongod_child = require('./mongod-dev-child.js').start(mongodb_port, 'test-db')
 
 mongod_child.on('close', function(code) {
   process.exit(code)

@@ -9,7 +9,7 @@ process.env.MONGODB_PORT = process.env.MONGODB_PORT || '27017'
  * Start up local mongodb
  */
 var mongodb_port = process.env.MONGODB_PORT
-var mongod_child = require('../mongod-dev-child.js').start(mongodb_port)
+var mongod_child = require('../mongod-dev-child.js').start(mongodb_port, 'dev-db')
 
 /**
  * Handle exiting entire application by shutting down server
