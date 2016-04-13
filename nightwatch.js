@@ -2,6 +2,10 @@ var chromedriver = `bin/${process.platform}/chromedriver${process.platform == 'w
 
 console.log("Using chromedriver: ", chromedriver)
 
+if (process.platform !== 'win32') {
+  require('child_process').execSync(`chmod +x ${chromedriver}`)
+}
+
 module.exports = {
   "src_folders" : ["tests"],
   "output_folder" : "reports",
