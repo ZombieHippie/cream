@@ -4,11 +4,15 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "predev": "npm run postcleanup",
+    "predev": "npm run postcleanup-dev",
     "dev": "node ./bin/dev",
+    "pretest": "npm run cleanup-test",
     "test": "node ./runtests.js",
-    "cleanup": "rimraf ./test-db/**/*",
-    "postcleanup": "mkdirp ./test-db"
+    "cleanup-test": "rimraf ./test-db/**/*",
+    "postcleanup-test": "npm run mkdirs",
+    "cleanup-dev": "rimraf ./dev-db/**/*",
+    "postcleanup-dev": "npm run mkdirs",
+    "mkdirs": "mkdirp ./test-db ./dev-db"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
