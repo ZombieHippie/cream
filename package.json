@@ -12,7 +12,7 @@
     "postcleanup-test": "npm run mkdirs",
     "cleanup-dev": "rimraf ./dev-db/**/*",
     "postcleanup-dev": "npm run mkdirs",
-    "mkdirs": "mkdirp ./test-db ./dev-db"
+    "mkdirs": "mkdirp ./test-db ./dev-db ./test-db-log ./dev-db-log"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
