@@ -48,7 +48,7 @@ process.env.APP_PORT = app_port
 
 var nw_cmd = node_cmd
 var nw_js = path.join(__dirname, 'node_modules/nightwatch/bin', 'runner.js')
-var nw_args = [nw_js]
+var nw_args = [nw_js, '--config=nightwatch.js']
 
 var nw_child = proc.spawn(nw_cmd, nw_args, {
   stdio: 'inherit',
