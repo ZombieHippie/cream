@@ -1,4 +1,6 @@
 node_modules
 *.log
-test-db
+test-db/*
+test-db-log/*
 reports/*.xml
+reports/**/*

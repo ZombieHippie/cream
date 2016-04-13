@@ -4,9 +4,9 @@ var mongoose = require("mongoose")
 var logger = require('morgan');
 
 var mhost = process.env.MONGODB_HOST || 'localhost'
+var mport = process.env.MONGODB_PORT || '27017'
 var mdb = process.env.MONGODB_DB || 'creamstream-local'
-var mconn = 'mongodb://' + mhost + '/' + mdb
-
+var mconn = 'mongodb://' + mhost + ':' + mport + '/' + mdb
 
 var connected_db = null
 
@@ -22,23 +22,15 @@ function connect (callback) {
       console.log('mongodb connecting to ' + mconn)
       mongoose.connect(mconn, console.log.bind(console, "MONGODB CONNECTION"))
       db.on('all', console.log.bind(console, 'MONGODB_VERBOSE'))
-      db.on('error', console.error.bind(console))//, 'mongodb connection error:'))
+      db.on('error', console.error.bind(console, 'MONGODB_ERROR'))
       db.once('open', function MongooseConnectionCallback () {
         connected_db = db
-        if (mongoose.isMocked) {
-          console.log("MongoDB is being MOCKED!")
-        }
-        console.log('mongodb connected!')
+        console.log('MongoDB connected!')
         if (callback) callback(db)
       })
     }
 
-    if (process.env.MOCKDB) {
-      var mockgoose = require('mockgoose')
-      mockgoose(mongoose).then(ConnectMongoDB)
-    } else {
-      ConnectMongoDB()
-    }
+    ConnectMongoDB()
   }
 }
 
