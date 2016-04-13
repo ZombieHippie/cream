@@ -39,16 +39,16 @@ module.exports = {
         "enabled" : !travis_ci,
         "path" : "./reports"
       },
-      "desiredCapabilities": {
+      /*"desiredCapabilities": {
         "browserName": "firefox",
         "javascriptEnabled": true,
         "acceptSslCerts": true
-      }/*,
+      },*/
       "desiredCapabilities": {
         "browserName": "chrome",
         "javascriptEnabled": true,
         "acceptSslCerts": true
-      }*/
+      }
     },
 
     "chrome" : {
