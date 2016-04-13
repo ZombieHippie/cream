@@ -1,0 +1,64 @@
+extends layout
+
+block head
+  link(rel='stylesheet' href='/stylesheets/lobby.css')
+
+block content
+  h1= title
+  // p Welcome to #{title}
+
+  p
+    button.btn.btn-info(onclick= "window.location.href = '/about'") About Us
+    | &nbsp;
+    button.btn.btn-primary(onclick= "window.location.href = '#popup-create-room'") Create Room
+
+  div
+    table.table.table-bordered(style="background: white")
+      thead
+        tr
+          th(style="width: 70%") Name
+          th Capacity
+          th Private
+      tbody
+        each room in rooms
+          tr(class=(room.capacity > 1 ? '': 'table-warning'))
+            td(style="width: 70%")
+              if room.private
+                a(href='/room/login/' + room.slug)= room.name
+              else
+                a(href='/room/' + room.slug)= room.name
+            td
+              .label.label-default.label-pill=room.capacity
+            td
+              if room.private
+                span &#128274;
+
+  #popup-create-room
+    form(action="/room/create" method="post")
+      h2 Create Room
+      .public-field
+        label Name
+        input(type="text" name="Name")
+      .public-field
+        label Capacity
+        input(type="number" list='Capacity' name="Capacity")
+        datalist#Capacity
+          option(value='2')
+          option(value='3') 
+          option(value='4')
+          option(value='5') 
+          option(value='6')       
+        //input(type="number" name="Capacity")
+      .public-field
+        label Public
+        input(type="radio" name="Private" value="false" checked="checked" onclick="togglePublic(this);")
+        | &nbsp &nbsp &nbsp &nbsp;
+        label Private
+        input(type="radio" name="Private" value="true" onclick="togglePrivate(this);")
+      .public-field
+        label Password
+        input(type="password" name="Password" disabled='true' id="user_pass")
+      button.btn.btn-primary(type="Submit") Create
+      a.btn.btn-secondary(href="#" role="button") Cancel
+block javascript
+  script(src="/script/clientLobby.js")

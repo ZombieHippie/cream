@@ -1,0 +1,18 @@
+extends layout
+
+block head
+  link(rel='stylesheet' href='/stylesheets/room.css')
+  link(rel='stylesheet' href='/easyrtc-api/easyrtc.css')
+
+block content
+  .room-top-bar
+    .room-title= room_id
+    if is_private
+      .is-private [ Private ]
+  include dynamic-view
+  
+block javascript
+  script(src='/socket.io/socket.io.js')
+  script(src='/easyrtc-api/adapter.js')
+  script(src='/easyrtc-api/easyrtc.js')
+  script(src="/script/dynamic-view.js")

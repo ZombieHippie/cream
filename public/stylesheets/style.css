@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/*  background-image: url('/images/bg.jpg');*/
+  background-image: url('/images/bg_creamycream.jpg');
+  
+}
+body .page {
+  padding: 50px;
+  text-align:center;
+  background: black;
+/*  background-image: url('/images/bg.jpg');*/
+  background-image: url('/images/bg_creamycream.jpg');
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+  color: #66FFFF;
+}

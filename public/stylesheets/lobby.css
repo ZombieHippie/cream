@@ -1,0 +1,49 @@
+
+/* Target is applied when href = #popup-create-room */
+div#popup-create-room:target {
+  display: block;
+}
+
+h1 {
+  color: #111;
+  font-weight: bolder;
+  margin: 1em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+}
+
+h2 {
+  color: #212b31;
+}
+
+#popup-create-room {
+  border-radius: 3em;
+  position: absolute;
+  margin-left:30%;
+
+  top: 1em;
+  left: 1em;
+  right: 1em;
+  bottom: 1em;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  height: 500px;
+  width: 600px;
+  display: none;
+}
+
+#popup-create-room input[type="submit"] {
+  margin-top: 15px;
+}
+
+.public-field input {
+  margin-left: 1em;
+}
+.public-field {
+  padding: 1em;
+  background: #dbdbdb;
+}
+
+#popup-create-room.show {
+  display: block;
+}
