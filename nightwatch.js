@@ -6,6 +6,9 @@ if (process.platform !== 'win32') {
   require('child_process').execSync(`chmod +x ${chromedriver}`)
 }
 
+// boolean if we are in travis-ci environment
+var travis_ci = !!process.env.TRAVIS_NODE_VERSION
+
 module.exports = {
   "src_folders" : ["tests"],
   "output_folder" : "reports",
@@ -31,16 +34,22 @@ module.exports = {
       "launch_url" : "http://localhost",
       "selenium_port"  : 4444,
       "selenium_host"  : "localhost",
+      "pathname": "/wd/hub",
       "silent": true,
       "screenshots" : {
-        "enabled" : true,
+        "enabled" : !travis_ci,
         "path" : "./reports"
       },
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }/*,
       "desiredCapabilities": {
         "browserName": "chrome",
         "javascriptEnabled": true,
         "acceptSslCerts": true
-      }
+      }*/
     },
 
     "chrome" : {
