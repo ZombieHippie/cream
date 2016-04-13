@@ -1,9 +1,10 @@
 
 var path = require('path')
 var proc = require('child_process')
+var node_cmd = process.env.NODE_EXEC || 'node'
 
 exports.start = function StartMongod(mongodb_port, db_dir) {
-  var mongod_cmd = 'node'
+  var mongod_cmd = node_cmd
   var mongod_js = path.join(__dirname, 'node_modules/mongodb-prebuilt/binjs', 'mongod.js')
   var mongod_args = [ mongod_js, '--dbpath=' + db_dir, '--logpath=test-db-log/log', '--port=' + mongodb_port]
 

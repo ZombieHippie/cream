@@ -4,6 +4,7 @@
 
 var proc = require('child_process')
 var path = require('path')
+var node_cmd = process.env.NODE_EXEC || 'node'
 
 /** Use intermediate process spawner to debug */
 var oldSpawn = proc.spawn;
@@ -23,7 +24,7 @@ mongod_child.on('close', function(code) {
   process.exit(code)
 })
 
-var app_cmd = 'node'
+var app_cmd = node_cmd
 var app_js = path.join(__dirname, 'bin/www')
 var app_args = [ app_js ]
 
@@ -45,7 +46,7 @@ app_child.on('close', function(code) {
 process.env.APP_PORT = app_port
 
 
-var nw_cmd = 'node'
+var nw_cmd = node_cmd
 var nw_js = path.join(__dirname, 'node_modules/nightwatch/bin', 'runner.js')
 var nw_args = [nw_js]
 
