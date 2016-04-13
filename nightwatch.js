@@ -34,7 +34,6 @@ module.exports = {
       "launch_url" : "http://localhost",
       "selenium_port"  : 4444,
       "selenium_host"  : "localhost",
-      "pathname": "/wd/hub",
       "silent": true,
       "screenshots" : {
         "enabled" : !travis_ci,
