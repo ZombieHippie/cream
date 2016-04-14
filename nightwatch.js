@@ -44,11 +44,11 @@ module.exports = {
       globals: {
         waitForConditionTimeout: 10000,
       },
-      /*"desiredCapabilities": {
+      "desiredCapabilities": {
         "browserName": "firefox",
         "javascriptEnabled": true,
         "acceptSslCerts": true
-      },*/
+      },/*
       "desiredCapabilities": {
         "browserName": "chrome",
         "javascriptEnabled": true,
@@ -57,7 +57,7 @@ module.exports = {
         "chromeOptions": {
           "args": [ "--no-sandbox" ]
         }
-      }
+      }*/
     },
 
     "chrome" : {
