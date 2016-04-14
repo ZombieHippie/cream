@@ -30,3 +30,5 @@ before_script:
   #- sleep 3 # give xvfb some time to start
 
 script: npm test
+
+after_script: cat selenium-debug.log
