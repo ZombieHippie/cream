@@ -3,7 +3,7 @@ var chromedriver = `bin/${process.platform}/chromedriver${process.platform == 'w
 console.log("Using chromedriver: ", chromedriver)
 
 if (process.platform !== 'win32') {
-  require('child_process').execSync(`chmod +x ${chromedriver}`)
+  require('child_process').execSync(`chmod a+x ${chromedriver}`)
 }
 
 // boolean if we are in travis-ci environment
