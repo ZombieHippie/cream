@@ -31,13 +31,16 @@ module.exports = {
 
   "test_settings" : {
     "default" : {
-      //"launch_url" : "https://localhost:17011",
+      "launch_url" : 'http://localhost:4444',
       "selenium_port"  : "4444",
       "selenium_host"  : "localhost",
       "silent": false,
       "screenshots" : {
         "enabled" : !travis_ci,
         "path" : "./reports"
+      },
+      globals: {
+        waitForConditionTimeout: 10000,
       },
       /*"desiredCapabilities": {
         "browserName": "firefox",
