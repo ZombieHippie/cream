@@ -34,15 +34,9 @@ var app_js = path.join(__dirname, 'bin/www')
 var app_args = [ app_js ]
 
 
-/** If Travis run headless 
-if (travis) {
-  nw_args = ['-a', '--server-args="-screen 0 1600x1200x24"', nw_cmd].concat(nw_args)
-  nw_cmd = "xvfb-run" 
-}
-*/
 var space = travis ? 5000 : 1000
 setTimeout(function () {
-  StartApp()
+  app_child = StartApp()
   if (!travis) {
     var StartNightWatch = require('./start-nightwatch').StartNightWatch
     setTimeout(StartNightWatch, space, node_cmd, app_port, app_child, mongod_child)
@@ -50,7 +44,7 @@ setTimeout(function () {
 }, space)
 
 function StartApp () {
-  app_child = proc.spawn(app_cmd, app_args, {
+  var app_child = proc.spawn(app_cmd, app_args, {
     stdio: 'inherit',
     cwd: __dirname,
     env: {
@@ -66,5 +60,6 @@ function StartApp () {
   })
 
   process.env.APP_PORT = app_port
+  return app_child
 }
 
