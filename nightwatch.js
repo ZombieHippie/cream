@@ -20,7 +20,7 @@ module.exports = {
   "selenium" : {
     "start_process" : true,
     "server_path" : "bin/selenium-server-standalone-2.53.0.jar",
-    "log_path" : "",
+    "log_path" : "selenium-debug.log",
     "host" : "127.0.0.1",
     "port" : 4444,
     "cli_args" : {
@@ -47,7 +47,10 @@ module.exports = {
       "desiredCapabilities": {
         "browserName": "chrome",
         "javascriptEnabled": true,
-        "acceptSslCerts": true
+        "acceptSslCerts": true,
+        "chromeOptions": {
+          "args": [ "--no-sandbox" ]
+        }
       }
     },
 

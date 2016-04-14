@@ -33,4 +33,5 @@ script: npm test
 
 after_script:
   - "ls"
+  - "ls /var/log"
   - "cat selenium-debug.log"
