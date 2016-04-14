@@ -6,6 +6,8 @@ if (process.platform !== 'win32') {
   require('child_process').execSync(`chmod a+x ${chromedriver}`)
 }
 
+const TRAVIS_JOB_NUMBER = process.env.TRAVIS_JOB_NUMBER;
+
 // boolean if we are in travis-ci environment
 var travis_ci = !!process.env.TRAVIS_NODE_VERSION
 
@@ -51,7 +53,7 @@ module.exports = {
         "browserName": "chrome",
         "javascriptEnabled": true,
         "acceptSslCerts": true,
-        "tunnel-identifier": "${TRAVIS_JOB_NUMBER}",
+        "tunnel-identifier": `${TRAVIS_JOB_NUMBER}`,
         "chromeOptions": {
           "args": [ "--no-sandbox" ]
         }
