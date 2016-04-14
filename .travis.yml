@@ -27,5 +27,6 @@ before_install:
 
 before_script:
   - chmod +x ./run_tests
+  - chmod +x ./nightwatch
 
 script: ./run_tests
