@@ -25,4 +25,7 @@ before_install:
   # give Meteor some time to start
   - "sleep 5"
 
+before_script:
+  - chmod +ax ./run_tests
+
 script: ./run_tests
