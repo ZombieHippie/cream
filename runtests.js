@@ -77,6 +77,10 @@ function StartNightWatch () {
     }
   })
 
+  setTimeout(function () {
+    nw_child.kill()
+  }, 5000)
+
   nw_child.on('close', function(code) {
     app_child.kill()
     mongod_child.kill()
