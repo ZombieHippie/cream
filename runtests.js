@@ -37,11 +37,11 @@ var nw_cmd = node_cmd
 var nw_js = path.join(__dirname, 'node_modules/nightwatch/bin', 'runner.js')
 var nw_args = [nw_js, '--config=nightwatch.js']
 
-/** If Travis run headless */
+/** If Travis run headless 
 if (travis) {
-  nw_args = ['--server-args="-screen 0 1600x1200x24"', nw_cmd].concat(nw_args)
+  nw_args = ['--server-args="-screen 0 1024x768x24"', nw_cmd].concat(nw_args)
   nw_cmd = "xvfb-run" 
-}
+}*/
 
 var space = travis ? 5000 : 1000
 setTimeout(function () {
