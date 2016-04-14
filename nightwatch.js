@@ -20,9 +20,9 @@ module.exports = {
   "selenium" : {
     "start_process" : true,
     "server_path" : "bin/selenium-server-standalone-2.53.0.jar",
-    "log_path" : "selenium-debug.log",
+    "log_path" : "",
     "host" : "127.0.0.1",
-    "port" : 4444,
+    "port" : "4444",
     "cli_args" : {
       "webdriver.chrome.driver" : chromedriver,
       "trustAllSSLCertificates" : true
@@ -31,8 +31,8 @@ module.exports = {
 
   "test_settings" : {
     "default" : {
-      "launch_url" : "http://localhost",
-      "selenium_port"  : 4444,
+      //"launch_url" : "https://localhost:17011",
+      "selenium_port"  : "4444",
       "selenium_host"  : "localhost",
       "silent": false,
       "screenshots" : {
