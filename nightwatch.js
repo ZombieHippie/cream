@@ -48,6 +48,7 @@ module.exports = {
         "browserName": "chrome",
         "javascriptEnabled": true,
         "acceptSslCerts": true,
+        "tunnel-identifier": "${TRAVIS_JOB_NUMBER}",
         "chromeOptions": {
           "args": [ "--no-sandbox" ]
         }
@@ -59,6 +60,7 @@ module.exports = {
         "browserName": "chrome",
         "javascriptEnabled": true,
         "acceptSslCerts": true,
+        "tunnel-identifier": "${TRAVIS_JOB_NUMBER}",
         "chromeOptions": {
           "args": [ "--no-sandbox" ]
         }
