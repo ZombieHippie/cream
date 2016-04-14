@@ -1,8 +1,5 @@
 node_modules
 *.log
-test-db/*
-test-db-log/*
-dev-db/*
-dev-db-log/*
+db-data/*
 reports/*.xml
 reports/**/*

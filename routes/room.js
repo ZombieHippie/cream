@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var database = require('../database')
+var database = require('../lib/database')
 
 router.post('/create', function (req, res, next) {
   // check if name is used

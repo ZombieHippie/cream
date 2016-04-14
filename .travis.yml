@@ -23,7 +23,7 @@ before_install:
   - "export NODE_EXEC=$(nvm which $TRAVIS_NODE_VERSION)"
   - "npm test &"
   # give Meteor some time to start
-  - "sleep 5"
+  - "sleep 10"
 
 before_script:
   - chmod +x ./run_tests

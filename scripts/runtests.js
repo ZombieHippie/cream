@@ -30,7 +30,7 @@ mongod_child.on('close', function(code) {
 
 var app_child = null
 var app_cmd = node_cmd
-var app_js = path.join(__dirname, 'bin/www')
+var app_js = path.join(__dirname, '../bin/www')
 var app_args = [ app_js ]
 
 
