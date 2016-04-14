@@ -21,7 +21,7 @@ before_install:
   # setup Meteor app
   - "npm install"
   - "export NODE_EXEC=$(nvm which $TRAVIS_NODE_VERSION)"
-  - "npm test"
+  - "npm test &"
   # give Meteor some time to start
   - "sleep 5"
 
