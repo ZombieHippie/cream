@@ -10,7 +10,7 @@ var room = require('./routes/room');
 var lobby = require('./routes/lobby');
 var about = require('./routes/about');
 
-require('./database').connect()
+require('./lib/database').connect()
 
 var app = express();
 

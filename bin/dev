@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+process.env.DEBUG = 'cream:*'
+process.env.MONGODB_PORT = process.env.MONGODB_PORT || '27017'
+/**
+ * Start up local mongodb
+ */
+var mongodb_port = process.env.MONGODB_PORT
+var mongod_child = require('../scripts/mongod-dev-child.js').start(mongodb_port, 'dev-db')
+
+/**
+ * Handle exiting entire application by shutting down server
+ */
+function exitHandler(options, err) {
+  mongod_child.kill()
+  if (options.cleanup) console.log('cleaning up');
+  if (err) console.error(err.stack);
+  if (options.exit) process.exit();
+}
+//do something when app is closing
+process.on('exit', exitHandler.bind(null,{cleanup:true}));
+//catches ctrl+c event
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+//catches uncaught exceptions
+process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
+
+var nodemon = require('nodemon')
+
+nodemon({
+  script: './bin/www',
+  ext: 'js json css jade'
+});
+
+nodemon.on('start', function () {
+  console.log('App has started')
+}).on('quit', function () {
+  console.log('App has quit')
+}).on('restart', function (files) {
+  console.log('App restarted due to: ', files)
+})

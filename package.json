@@ -4,7 +4,15 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "predev": "npm run postcleanup-dev",
+    "dev": "node ./bin/dev",
+    "pretest": "npm run cleanup-test",
+    "test": "node ./scripts/runtests.js",
+    "cleanup-test": "rimraf ./db-data/test-db/**/*",
+    "postcleanup-test": "npm run mkdirs",
+    "cleanup-dev": "rimraf ./db-data/dev-db/**/*",
+    "postcleanup-dev": "npm run mkdirs",
+    "mkdirs": "mkdirp ./db-data/test-db ./db-data/dev-db ./db-data/test-db-log ./db-data/dev-db-log"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -20,5 +28,12 @@
     "selfsigned": "^1.8.0",
     "serve-favicon": "~2.3.0",
     "socket.io": "^0.9.x"
+  },
+  "devDependencies": {
+    "mkdirp": "^0.5.1",
+    "mongodb-prebuilt": "ZombieHippie/mongodb-prebuilt#b64322f",
+    "nightwatch": "^0.5.36",
+    "rimraf": "^2.5.2",
+    "selenium-webdriver": "^2.53.1"
   }
 }
