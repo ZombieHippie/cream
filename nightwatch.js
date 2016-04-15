@@ -26,7 +26,7 @@ module.exports = {
     "host" : "127.0.0.1",
     "port" : "4444",
     "cli_args" : {
-      "webdriver.chrome.driver": /*travis_ci ? 'selenium/chromedriver' :*/ chromedriver,
+      "webdriver.chrome.driver": (travis_ci ? '/usr/bin/chromedriver' : chromedriver),
       "trustAllSSLCertificates" : true
     }
   },
@@ -43,12 +43,12 @@ module.exports = {
       },
       globals: {
         waitForConditionTimeout: 10000,
-      },
+      },/*
       "desiredCapabilities": {
         "browserName": "firefox",
         "javascriptEnabled": true,
         "acceptSslCerts": true
-      },/*
+      },*/
       "desiredCapabilities": {
         "browserName": "chrome",
         "javascriptEnabled": true,
@@ -57,7 +57,7 @@ module.exports = {
         "chromeOptions": {
           "args": [ "--no-sandbox" ]
         }
-      }*/
+      }
     },
 
     "chrome" : {
