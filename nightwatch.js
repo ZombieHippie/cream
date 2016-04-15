@@ -37,7 +37,7 @@ module.exports = {
       "launch_url" : 'http://localhost:4444',
       "selenium_port"  : "4444",
       "selenium_host"  : "localhost",
-      "silent": (travis_ci ? false : true),
+      "silent": !process.env.SELENIUM_LOG,
       "screenshots" : {
         "enabled" : !travis_ci,
         "path" : "./reports"
