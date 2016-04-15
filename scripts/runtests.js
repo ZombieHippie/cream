@@ -25,7 +25,7 @@ var app_js = path.join(__dirname, '../bin/www')
 var app_args = [ app_js ]
 
 
-var space = travis ? 3000 : 1000
+var space = parseInt(process.env.WAIT) || (travis ? 3000 : 1000)
 setTimeout(function () {
   app_child = StartApp()
   if (!travis) {
