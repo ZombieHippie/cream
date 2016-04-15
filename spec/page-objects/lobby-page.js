@@ -1,4 +1,8 @@
+const host = 'https://localhost:' + (process.env.APP_PORT || '3000')
+
 module.exports = {
-  url: () => this.api.launchUrl + '/lobby',
-  elements: {}
+  url: host + '/lobby',
+  elements: {
+    
+  }
 };

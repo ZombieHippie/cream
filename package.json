@@ -32,7 +32,7 @@
   "devDependencies": {
     "mkdirp": "^0.5.1",
     "mongodb-prebuilt": "ZombieHippie/mongodb-prebuilt#b64322f",
-    "nightwatch": "^0.5.36",
+    "nightwatch": "^0.8.18",
     "rimraf": "^2.5.2",
     "selenium-webdriver": "^2.53.1"
   }
