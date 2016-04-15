@@ -26,8 +26,8 @@ sudo apt-get -y install unzip
 #unzip chromedriver_linux32_2.1.zip
 #
 # For x86-64:
-wget -c http://chromedriver.googlecode.com/files/chromedriver_linux64_2.1.zip
-unzip chromedriver_linux64_2.1.zip
+wget -c http://chromedriver.googlecode.com/files/chromedriver_linux64_2.21.zip
+unzip chromedriver_linux64_2.21.zip
 # Neither creating symbolic link nor adding dir to $PATH worked for me
 # in a Vagrant VM. So, let's blatantly copy the binary:
 sudo cp ./chromedriver /usr/bin/
