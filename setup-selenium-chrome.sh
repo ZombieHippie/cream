@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 #
 # Bash script to setup headless Selenium (uses Xvfb and Chrome)
 # (Tested on Ubuntu 12.04)
