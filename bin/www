@@ -23,7 +23,7 @@ app.set('port', port);
 var server
 if (useSSL) {
   var https = require('https');
-  var generateSSL = require('../generate-ssl')
+  var generateSSL = require('../lib/generate-ssl')
   generateSSL(function (error, pems) {
     if (error) console.log(error)
     else {
