@@ -26,7 +26,7 @@ module.exports = {
     "host" : "127.0.0.1",
     "port" : "4444",
     "cli_args" : {
-      "webdriver.chrome.driver": (travis_ci ? '/usr/bin/chromedriver' : chromedriver),
+      "webdriver.chrome.driver": (/*travis_ci ? '/usr/bin/chromedriver' : */chromedriver),
       "webdriver.chrome.bin": (travis_ci ? "/usr/bin/google-chrome" : ""),
       "trustAllSSLCertificates" : true
     }
