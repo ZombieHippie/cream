@@ -12,11 +12,11 @@ const TRAVIS_JOB_NUMBER = process.env.TRAVIS_JOB_NUMBER;
 var travis_ci = !!process.env.TRAVIS_NODE_VERSION
 
 module.exports = {
-  "src_folders" : ["tests"],
+  "src_folders" : ["spec/tests"],
   "output_folder" : "reports",
   "custom_commands_path" : "",
   "custom_assertions_path" : "",
-  "page_objects_path" : "",
+  "page_objects_path" : "spec/page-objects",
   "globals_path" : "",
 
   "selenium" : {
@@ -34,7 +34,7 @@ module.exports = {
 
   "test_settings" : {
     "default" : {
-      "launch_url" : 'http://localhost:4444',
+      "launch_url" : 'https://localhost:' + (process.env.APP_PORT || '3000'),
       "selenium_port"  : "4444",
       "selenium_host"  : "localhost",
       "silent": !process.env.SELENIUM_LOG,
@@ -43,7 +43,7 @@ module.exports = {
         "path" : "./reports"
       },
       globals: {
-        waitForConditionTimeout: 10000,
+        waitForConditionTimeout: 10000
       },/*
       "desiredCapabilities": {
         "browserName": "firefox",

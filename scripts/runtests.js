@@ -7,16 +7,6 @@ var path = require('path')
 var node_cmd = process.env.NODE_EXEC || 'node'
 var travis = !!process.env.TRAVIS
 
-
-/** Use intermediate process spawner to debug */
-var oldSpawn = proc.spawn;
-proc.spawn = function debugSpawn() {
-    console.log('RUNTESTS.js', 'spawn called:')
-    console.log('RUNTESTS.js', arguments)
-    var result = oldSpawn.apply(this, arguments);
-    return result;
-};
-
 var mongodb_port = process.env.MONGODB_PORT || '17010'
 var app_port = process.env.APP_PORT || '17011'
 process.env.APP_PORT = app_port
@@ -35,7 +25,7 @@ var app_js = path.join(__dirname, '../bin/www')
 var app_args = [ app_js ]
 
 
-var space = travis ? 5000 : 1000
+var space = travis ? 3000 : 1000
 setTimeout(function () {
   app_child = StartApp()
   if (!travis) {
@@ -51,8 +41,9 @@ function StartApp () {
     env: {
       'env': 'development',
       'MONGODB_HOST': 'localhost:' + mongodb_port,
-      'DEBUG': 'cream:*,nightwatch:*',
+      //'DEBUG': 'cream:*',
       'PORT': app_port,
+      'DISABLE_MORGAN': '1'
     }
   })
 
