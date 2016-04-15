@@ -26,7 +26,7 @@ module.exports = {
     "host" : "127.0.0.1",
     "port" : "4444",
     "cli_args" : {
-      "webdriver.chrome.driver": (travis_ci ? '/usr/bin/chromedriver' : chromedriver),
+      "webdriver.chrome.driver": chromedriver,
       "webdriver.chrome.bin": (travis_ci ? "/usr/bin/google-chrome" : ""),
       "trustAllSSLCertificates" : true
     }
@@ -37,7 +37,7 @@ module.exports = {
       "launch_url" : 'http://localhost:4444',
       "selenium_port"  : "4444",
       "selenium_host"  : "localhost",
-      "silent": (travis_ci ? false : true),
+      "silent": !process.env.SELENIUM_LOG,
       "screenshots" : {
         "enabled" : !travis_ci,
         "path" : "./reports"

@@ -17,8 +17,9 @@ proc.spawn = function debugSpawn() {
     return result;
 };
 
-var mongodb_port = '17010'
-var app_port = '17011'
+var mongodb_port = process.env.MONGODB_PORT || '17010'
+var app_port = process.env.APP_PORT || '17011'
+process.env.APP_PORT = app_port
 
 var mongod_child = require('./mongod-dev-child.js').start(mongodb_port, 'test-db')
 
