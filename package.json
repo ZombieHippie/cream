@@ -28,7 +28,8 @@
     "nodemon": "^1.9.1",
     "selfsigned": "^1.8.0",
     "serve-favicon": "~2.3.0",
-    "socket.io": "^0.9.x"
+    "socket.io": "^0.9.x",
+    "util-extend": "^1.0.3"
   },
   "devDependencies": {
     "mkdirp": "^0.5.1",
