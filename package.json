@@ -8,6 +8,7 @@
     "dev": "node ./bin/dev",
     "pretest": "npm run cleanup-test",
     "test": "node ./scripts/runtests.js",
+    "dev-test": "nodemon --exec npm test",
     "cleanup-test": "rimraf ./db-data/test-db/**/*",
     "postcleanup-test": "npm run mkdirs",
     "cleanup-dev": "rimraf ./db-data/dev-db/**/*",
