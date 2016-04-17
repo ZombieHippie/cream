@@ -4,6 +4,7 @@
   background: #111;
   color: white;
   text-align: center;
+  position: relative;
 }
 .room-top-bar .room-title {
   font-size: 16px;
@@ -17,6 +18,30 @@
   display:inline-block;
   margin-left: 10vw;
 }
+
+.room-top-bar .is-private {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.action-buttons {
+  position: absolute;
+  left: 0;
+  top: .5em;
+  width: 100%;
+  text-align: center;
+  z-index: 900;
+}
+
+/* While video is loading */
+video {
+  background-image: url(/images/background.gif);
+  background-size: cover;
+  margin: 1em;
+}
+
+/* EASY RTC STYLES vvv */
 
 .transit {
     transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, transform 1s;
@@ -40,7 +65,7 @@
 
 .thumbCommon {
     z-index:2;
-    box-shadow: 5px 5px 5px #000000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 #controlArea {
@@ -48,7 +73,6 @@
 }
 
 body {
-    background-color:#ffd0d0;
     margin-left:0px;
     margin-top:0px;
 }

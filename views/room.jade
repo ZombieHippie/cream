@@ -1,15 +1,17 @@
 extends layout
 
 block head
-  link(rel='stylesheet' href='/stylesheets/room.css')
   link(rel='stylesheet' href='/easyrtc-api/easyrtc.css')
+  link(rel='stylesheet' href='/stylesheets/room.css')
 
 block content
   .room-top-bar
-    .room-title= room_id
+    span.room-title= room_id
     if is_private
-      .is-private [ Private ]
+      .is-private &#128274;
   include dynamic-view
+  .action-buttons
+    a.btn.btn-secondary(role="button" href="/lobby") Leave Room
   
 block javascript
   script(src='/socket.io/socket.io.js')

@@ -5,7 +5,7 @@ var database = require('../lib/database')
 router.post('/create', function (req, res, next) {
   // check if name is used
   var name = req.body.Name
-  var slug = name.replace(/\W+/g, '-')
+  var slug = name.replace(/\W+/g, '-').toLowerCase()
 
   database.Room
   .findOne({ slug: slug })
@@ -36,7 +36,8 @@ router.post('/create', function (req, res, next) {
         doc.save((error) => {
           if (error) return next(error)
 
-          res.redirect('/room/' + req.body.Name)
+          // not always necessary to have req.app.locals.host except for this // functionality
+          res.redirect(req.app.locals.host + '//' + slug)
         })
       })
 
@@ -67,68 +68,6 @@ router.get('/login/:slug', function(req, res, next) {
   })
 
 });
-
-router.get('/:slug', function(req, res, next) {
-  var slug = req.params.slug
-  // TODO use slug to lookup connection information of peers
-  
-  database.Room
-  .findOne({ slug: slug })
-  .exec((error, roomDoc) => {
-
-    if (roomDoc == null) {
-      res.render("error", { message: "Room doesn't exist", error:{}})
-
-    } else if (roomDoc.private) {
-      res.redirect("/room/login/" + rid)
-
-    } else {
-      res.render('room', {
-        title: roomDoc.name + ' - Cream Room',
-        room_id: roomDoc.slug,
-        is_private: roomDoc.private,
-      })
-    }
-  })
-
-});
-
-/* POST */
-router.post('/:slug', function(req, res, next) {
-  var slug = req.params.slug
-  var password = req.body.Password
-  // TODO use slug to lookup connection information of peers
-  
-  database.Room
-  .findOne({ slug: slug })
-  .exec((error, roomDoc) => {
-    if (roomDoc == null) {
-      res.render("error", { message: "Room doesn't exist", error:{}})
-
-    } else {
-      roomDoc.verifyPassword(
-        password,
-        (error, passValid) => {
-          if (error) return next(error)
-
-          console.log("PASSWORD", password, passValid)
-
-          if (!passValid) {
-            res.redirect("/room/login/" + slug + "?message=Password is incorrect!")
-
-          } else {
-            res.render('room', {
-              title: roomDoc.name + ' - Cream Room',
-              room_id: roomDoc.slug,
-              is_private: roomDoc.private,
-            })
-          }
-        }
-      )
-    }
-  })
-  
-})
 
 router.get('/', function(req,res,next) {
   // redirect to the lobby

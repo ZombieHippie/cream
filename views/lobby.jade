@@ -4,37 +4,36 @@ block head
   link(rel='stylesheet' href='/stylesheets/lobby.css')
 
 block content
-  h1= title
-  // p Welcome to #{title}
-
-  p
-    button.btn.btn-info(onclick= "window.location.href = '/about'"
-      title="About the developers") About Us
-    | &nbsp;
-    button.btn.btn-primary(onclick= "window.location.href = '#popup-create-room'") Create Room
+  .lobby-header
+    h1= title
+    .header-buttons
+      a.btn.btn-info(href="#about" role="button") About Us
+      | &nbsp;
+      a.btn.btn-primary(href="#create-room" role="button") Create Room
 
   div
     table.table.table-bordered(style="background: white")
       thead
         tr
-          th(style="width: 70%") Name
-          th Capacity
-          th Private
+          th Name
+          th(style="width: 2em;") Capacity
+          th(style="width: 1em;") Private
       tbody
         each room in rooms
           tr(class=(room.capacity > 1 ? '': 'table-warning'))
-            td(style="width: 70%")
+            td
               if room.private
                 a(href='/room/login/' + room.slug)= room.name
               else
-                a(href='/room/' + room.slug)= room.name
-            td
+                a(href=host + '//' + room.slug)= room.name
+            td(style="width: 2em;")
               .label.label-default.label-pill=room.capacity
-            td
+            td(style="width: 1em;")
               if room.private
                 span &#128274;
 
-  #popup-create-room
+  #create-room.popup
+    a.popup-exit(href="#")
     form(action="/room/create" method="post")
       h2 Create Room
       .public-field
@@ -42,24 +41,30 @@ block content
         input(type="text" name="Name")
       .public-field
         label Capacity
-        input(type="number" list='Capacity' name="Capacity")
-        datalist#Capacity
+        input(type="number" list='capacity-options' name="Capacity")
+        datalist#capacity-options
           option(value='2')
-          option(value='3') 
+          option(value='3')
           option(value='4')
-          option(value='5') 
-          option(value='6')       
-        //input(type="number" name="Capacity")
+          option(value='5')
+          option(value='6')
       .public-field
         label Public
-        input(type="radio" name="Private" value="false" checked="checked" onclick="togglePublic(this);")
+        input(type="radio" name="Private" value="false" checked="checked" onclick="setPasswordDisabled(true);")
         | &nbsp; &nbsp; &nbsp; &nbsp;
         label Private
-        input(type="radio" name="Private" value="true" onclick="togglePrivate(this);")
+        input(type="radio" name="Private" value="true" onclick="setPasswordDisabled(false);")
       .public-field
         label Password
-        input(type="password" name="Password" disabled='true' id="user_pass")
-      button.btn.btn-primary(type="Submit") Create
-      a.btn.btn-secondary(href="#" role="button") Cancel
+        input(type="password" name="Password" disabled='true')
+      .action-buttons
+        button.btn.btn-primary(type="submit") Create
+        a.btn.btn-secondary(href="#" role="button") Cancel
+  #about.popup
+    a.popup-exit(href="#")
+    h1 About Us
+    h2= team_name
+    each name in team_members
+      p= name
 block javascript
   script(src="/script/clientLobby.js")

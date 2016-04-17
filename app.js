@@ -7,12 +7,16 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var room = require('./routes/room');
+var rootRoom = require('./routes/root-room');
 var lobby = require('./routes/lobby');
-var about = require('./routes/about');
 
 require('./lib/database').connect()
 
 var app = express();
+
+// default host for now
+app.locals.host = 'https://localhost:' + (process.env.PORT || '3000')
+app.locals.host = process.env.APP_HOST || app.locals.host
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,8 +35,8 @@ app.use('/easyrtc-api', express.static(path.join(__dirname, 'node_modules/easyrt
 app.use('/socketio-api', express.static(path.join(__dirname, '/node_modules/socket.io/')));
 
 app.use('/lobby', lobby);
+app.use('//', rootRoom);
 app.use('/room', room);
-app.use('/about', about);
 app.use('/', index);
 
 // catch 404 and forward to error handler

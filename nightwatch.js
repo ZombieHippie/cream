@@ -15,8 +15,7 @@ module.exports = {
   "src_folders" : ["spec/tests"],
   "output_folder" : "reports",
   "custom_commands_path" : "",
-  "custom_assertions_path" : "",
-  "page_objects_path" : "./spec/page-objects",
+  "custom_assertions_path": "spec/custom_assertions",
   "globals_path" : "",
 
   "selenium" : {

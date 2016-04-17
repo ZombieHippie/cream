@@ -1,17 +1,15 @@
 
 function showCreateRoom() {
-  var createRoom = $('#popup-create-room')
+  var createRoom = $('#create-room')
   createRoom.addClass('show')
   createRoom.find("input[value='true']").on("click", function () {
-
+    // use this as reference, no functionality added here.
   })
 }
 
-//inefficient toggling of radio buttons - Cameron
-function togglePublic (rdo) {
-  document.getElementById("user_pass").disabled = true;
+// make a reference 
+var userPassEl = document.querySelector('#create-room [name=Password]')
+function setPasswordDisabled (disabled) {
+  userPassEl.disabled = disabled;
 }
 
-function togglePrivate (rdo) {
-  document.getElementById("user_pass").disabled = false;
-}

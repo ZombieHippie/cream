@@ -1,39 +1,30 @@
 
-/* Target is applied when href = #popup-create-room */
-div#popup-create-room:target {
-  display: block;
+.lobby-header {
+  padding: 4px;
+  text-align: left;
 }
-
-h1 {
+.lobby-header h1 {
   color: #111;
   font-weight: bolder;
-  margin: 1em;
   text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  display: inline-block;
 }
+.lobby-header .header-buttons {
+  float:right;
+  margin-top:2em;
+  margin-bottom: .5em;
 }
 
 h2 {
+  padding: .5em;
   color: #212b31;
 }
 
-#popup-create-room {
-  border-radius: 3em;
-  position: absolute;
-  margin-left:30%;
-
-  top: 1em;
-  left: 1em;
-  right: 1em;
-  bottom: 1em;
-  background: white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  height: 500px;
-  width: 600px;
-  display: none;
-}
-
-#popup-create-room input[type="submit"] {
-  margin-top: 15px;
+#create-room .action-buttons { }
+#create-room .action-buttons .btn {
+  float: right;
+  margin: 15px;
+  margin-right: 0px;
 }
 
 .public-field input {
@@ -41,9 +32,49 @@ h2 {
 }
 .public-field {
   padding: 1em;
-  background: #dbdbdb;
 }
 
-#popup-create-room.show {
-  display: block;
+/* Both the About and the Create Room use these popup styles */
+.popup {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .1s ease-in;
+  padding: 50px;
+}
+.popup {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: white;
+}
+/* Popup when screen is smaller */
+@media(min-width: 900px) {
+  .popup {
+    left: auto;
+    width: 500px;
+    right: 0;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6); 
+  }
+}
+/* Target is applied when href = #create-room */
+.popup:target {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.popup-exit:before {
+  content:"×";
+  color: #dbdbdb;
+  line-height: 1;
+  font-size: 3em;
+  transition: color .25s;
+}
+.popup-exit:hover, .popup-exit:focus { text-decoration: none; }
+.popup-exit:hover:before { color: #444; }
+.popup-exit {
+  position: absolute;
+  right: 1em;
+  top: 1em;
 }

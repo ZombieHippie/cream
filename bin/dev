@@ -31,7 +31,7 @@ var nodemon = require('nodemon')
 
 nodemon({
   script: './bin/www',
-  ext: 'js json css jade'
+  ext: 'js json'
 });
 
 nodemon.on('start', function () {

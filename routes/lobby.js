@@ -14,7 +14,9 @@ router.get('/', function(req, res, next) {
     } else {
       res.render('lobby', {
         title: 'Cream Stream lobby',
-        rooms: rooms
+        rooms: rooms,
+        team_name: 'The Cream Stream Dream Team',
+        team_members: ['Cole Lawrence', 'Matt Pierzynski', 'Kory Rekowski', 'David Robinson', 'Cameron Yuan']
       })
     }
   })

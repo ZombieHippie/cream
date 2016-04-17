@@ -9,7 +9,7 @@ block content
     | is a private room
     br
     | Please enter the password below
-  form(action=("/room/" + room.slug) method="post")
+  form(action=(host + "//" + room.slug) method="post")
     .public-field
       label Password
       input(type="password" name="Password")

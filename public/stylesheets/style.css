@@ -1,22 +1,23 @@
+
+html, body {
+  height: 100%;
+}
 body {
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-/*  background-image: url('/images/bg.jpg');*/
-  background-image: url('/images/bg_creamycream.jpg');
-  
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  // "Source Code Pro", "Consolas", monospace;
+  border-bottom: 1em solid #82214E;
 }
+footer {
+  background-image: url('/images/bg_creamycream.jpg');
+}
+
 body .page {
   padding: 50px;
-  text-align:center;
-  background: black;
-/*  background-image: url('/images/bg.jpg');*/
-  background-image: url('/images/bg_creamycream.jpg');
+  text-align: center;
 }
 
 a {
   color: #00B7FF;
 }
 
-h1 {
-  color: #66FFFF;
-}
