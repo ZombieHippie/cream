@@ -8,7 +8,8 @@ block content
   // p Welcome to #{title}
 
   p
-    button.btn.btn-info(onclick= "window.location.href = '/about'") About Us
+    button.btn.btn-info(onclick= "window.location.href = '/about'"
+      title="About the developers") About Us
     | &nbsp;
     button.btn.btn-primary(onclick= "window.location.href = '#popup-create-room'") Create Room
 
@@ -52,7 +53,7 @@ block content
       .public-field
         label Public
         input(type="radio" name="Private" value="false" checked="checked" onclick="togglePublic(this);")
-        | &nbsp &nbsp &nbsp &nbsp;
+        | &nbsp; &nbsp; &nbsp; &nbsp;
         label Private
         input(type="radio" name="Private" value="true" onclick="togglePrivate(this);")
       .public-field
