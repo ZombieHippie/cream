@@ -9,7 +9,8 @@ block content
     span.room-title= room_id
     if is_private
       .is-private &#128274;
-  include dynamic-view
+  .dynamic-view
+    include dynamic-view
   .action-buttons
     a.btn.btn-secondary(role="button" href="/lobby") Leave Room
   
@@ -18,3 +19,4 @@ block javascript
   script(src='/easyrtc-api/adapter.js')
   script(src='/easyrtc-api/easyrtc.js')
   script(src="/script/dynamic-view.js")
+  script appInit("#{ room_id }")

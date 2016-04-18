@@ -669,8 +669,9 @@ function messageListener(easyrtcid, msgType, content) {
     }
 }
 
-
-function appInit() {
+// https://github.com/priologic/easyrtc/blob/f57190db98d2a25dc63067878448feda1b0d847a/api/easy_app.js#L276
+function appInit(id) {
+    console.log("Connecting to '" + id + "'")
 
     // Prep for the top-down layout manager
     setReshaper('fullpage', reshapeFull);
@@ -689,7 +690,7 @@ function appInit() {
 
 
     easyrtc.setRoomOccupantListener(callEverybodyElse);
-    easyrtc.easyApp("easyrtc.multiparty", "box0", ["box1", "box2", "box3"], loginSuccess);
+    easyrtc.easyApp("creamstream." + String(id), "box0", ["box1", "box2", "box3"], loginSuccess);
     easyrtc.setPeerListener(messageListener);
     easyrtc.setDisconnectListener( function() {
         easyrtc.showError("LOST-CONNECTION", "Lost connection to signaling server");

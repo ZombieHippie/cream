@@ -8,6 +8,8 @@ var roomParameters = {
   //no room parameters at the moment?
 }
 
+console.log("Connecting to '" + room_id + "'")
+
 easyrtc.joinRoom(
   room_id, //1
   roomParameters, //2
