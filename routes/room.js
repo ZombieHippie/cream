@@ -6,7 +6,6 @@ router.post('/create', function (req, res, next) {
   // check if name is used
   var name = req.body.Name
   var slug = name.replace(/\W+/g, '-').toLowerCase()
-  //var trimmed_name =
 
   database.Room
   .findOne({ slug: slug })
