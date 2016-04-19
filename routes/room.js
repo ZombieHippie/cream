@@ -21,6 +21,13 @@ router.post('/create', function (req, res, next) {
         message: "Sorry there is already a room with the name: '" + req.body.Name + "'",
         error: {}
       })
+    } else if(parseInt(req.body.Capacity) < 2 || parseInt(req.body.Capacity) > 6 || req.body.Capacity == ''){
+      // Makes sure the capacity size is not less than 2 or greater than 6.
+      // Also makes sure the capacity size isn't left empty or has spaces.
+      return res.render("error", {
+        message: "'" + req.body.Capacity + "' is an invalid input for capacity. Please enter a capacity between 2 and 6.",
+        error: {}
+      })
     } else {
       // then
       var password = req.body.Password
@@ -52,7 +59,7 @@ router.post('/create', function (req, res, next) {
 /* GET users listing */
 router.get('/login/:slug', function(req, res, next) {
   var slug = req.params.slug
-  
+
   database.Room
   .findOne({ slug: slug })
   .exec((error, roomDoc) => {
@@ -60,7 +67,7 @@ router.get('/login/:slug', function(req, res, next) {
 
     if (roomDoc == null) {
       res.render("error", { message: "Room doesn't exist", error:{}})
-    
+
     } else {
       res.render('login', {
         title: roomDoc.name + ' - Cream Room',
