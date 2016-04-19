@@ -8,17 +8,17 @@ module.exports = {
   beforeEach: function(browser) {
     browser
     .url(host + '/lobby')
+    .waitForElementVisible('body')
   },
   // http://nightwatchjs.org/guide#writing-tests
   'About page shows when its button is clicked': function(browser) {
     browser
-    .waitForElementVisible('body')
     .assert.hidden(els.aboutPage)
     // Ensure that the about page link has the text About Us
     .assert.containsText(els.aboutPageLink, "About Us")
     // Click the About us button
     .click(els.aboutPageLink)
-    .assert.visible(els.aboutPage)
+    .assert.waitVisible(els.aboutPage)
     .assert.containsText(els.aboutPage, "Cole Lawrence")
     .assert.containsText(els.aboutPage, "Matt Pierzynski")
     .assert.containsText(els.aboutPage, "Kory Rekowski")
@@ -30,12 +30,11 @@ module.exports = {
   },
   'Create Room page shows when its button is clicked': function(browser) {
     browser
-    .waitForElementVisible('body')
     .assert.hidden(els.createRoomForm)
     .assert.containsText(els.createRoomLink, "Create Room")
     .click(els.createRoomLink)
     // Tests against the create room are in create-room.js
-    .assert.visible(els.createRoomForm)
+    .assert.waitVisible(els.createRoomForm)
     .click(els.createRoomExit)
     // wait for animation as element fades away
     .assert.waitHidden(els.createRoomForm)

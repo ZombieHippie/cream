@@ -25,7 +25,7 @@ block content
               if room.private
                 a(href='/room/login/' + room.slug)= room.name
               else
-                a(href=host + '//' + room.slug)= room.name
+                a(href='/r/' + room.slug)= room.name
             td(style="width: 2em;")
               .label.label-default.label-pill=room.capacity
             td(style="width: 1em;")

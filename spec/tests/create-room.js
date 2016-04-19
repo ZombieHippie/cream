@@ -37,7 +37,7 @@ module.exports = {
     // Public
     .click(els.createRoomPrivateFalse)
     .click(els.createRoomSubmit)
-    .assert.waitUrlEquals(host + '//alpha')
+    .assert.waitUrlEquals(host + '/r/alpha')
   },
   'Create Room - Beta Private': function(browser) {
     browser
@@ -72,7 +72,7 @@ module.exports = {
       .assert.waitUrlEquals(host + '/room/login/beta')
 	    .setValue(loginEls.loginRoomPassword, "beta-password")
       .click(loginEls.loginRoomSubmit)
-	    .assert.waitUrlEquals(host + '//beta')
+	    .assert.waitUrlEquals(host + '/r/beta')
       .end()
   }
 }

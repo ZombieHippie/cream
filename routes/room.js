@@ -5,7 +5,10 @@ var database = require('../lib/database')
 router.post('/create', function (req, res, next) {
   // check if name is used
   var name = req.body.Name
-  var slug = name.replace(/\W+/g, '-').toLowerCase()
+  var slug = name
+    .replace(/\W+/g, '-')
+    .replace(/^\-|\-$/g, '')
+    .toLowerCase()
 
   database.Room
   .findOne({ slug: slug })
@@ -37,7 +40,7 @@ router.post('/create', function (req, res, next) {
           if (error) return next(error)
 
           // not always necessary to have req.app.locals.host except for this // functionality
-          res.redirect(req.app.locals.host + '//' + slug)
+          res.redirect('/r/' + slug)
         })
       })
 
@@ -67,7 +70,7 @@ router.get('/login/:slug', function(req, res, next) {
     }
   })
 
-});
+})
 
 router.get('/', function(req,res,next) {
   // redirect to the lobby

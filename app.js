@@ -14,10 +14,6 @@ require('./lib/database').connect()
 
 var app = express();
 
-// default host for now
-app.locals.host = 'https://localhost:' + (process.env.PORT || '3000')
-app.locals.host = process.env.APP_HOST || app.locals.host
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -35,7 +31,7 @@ app.use('/easyrtc-api', express.static(path.join(__dirname, 'node_modules/easyrt
 app.use('/socketio-api', express.static(path.join(__dirname, '/node_modules/socket.io/')));
 
 app.use('/lobby', lobby);
-app.use('//', rootRoom);
+app.use('/r', rootRoom);
 app.use('/room', room);
 app.use('/', index);
 
