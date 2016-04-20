@@ -33,10 +33,15 @@
     "util-extend": "^1.0.3"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "mkdirp": "^0.5.1",
+    "mocha": "^2.4.5",
     "mongodb-prebuilt": "ZombieHippie/mongodb-prebuilt#b64322f",
     "nightwatch": "^0.8.18",
     "rimraf": "^2.5.2",
-    "selenium-webdriver": "^2.53.1"
+    "selenium-webdriver": "^2.53.1",
+    "wdio-junit-reporter": "0.0.2",
+    "wdio-mocha-framework": "^0.2.12",
+    "webdriverio": "^4.0.5"
   }
 }

@@ -1,23 +1,18 @@
 const host = 'https://localhost:' + (process.env.APP_PORT || '3000')
 
-const extend = require('util-extend')
-// Test to ensure all redirects are handled appropriately
-
 const els = require('../app-selectors/lobby-selectors')
 const loginEls = {
   loginRoomSubmit: "button[type=submit]",
   loginRoomPassword: "input[type=password]",
 }
 
-module.exports = {
-  beforeEach: function(browser) {
+describe('creating a room', function() {
+  before(function () {
     browser
-    .url(host + '/lobby')
-    .waitForElementVisible('body', 1000)
-  },
+    .url('/lobby')
+  })
 
-  // http://nightwatchjs.org/guide#writing-tests
-  'Create Room cancel': function(browser) {
+  it('cancels create room when the Cancel button is clicked', function() {
     browser
     .assert.hidden(els.createRoomForm)
     // Tests against the popup functionality are in lobby-links.js
@@ -26,8 +21,9 @@ module.exports = {
     .click(els.createRoomCancel)
     // wait for animation as element fades away
     .assert.waitHidden(els.createRoomForm)
-  },
-  'Create Room - Alpha Public': function(browser) {
+  })
+
+  it.skip('should create a public room named Alpha', function() {
     browser
     .click(els.createRoomLink)
     // Name "Alpha"
@@ -38,8 +34,9 @@ module.exports = {
     .click(els.createRoomPrivateFalse)
     .click(els.createRoomSubmit)
     .assert.waitUrlEquals(host + '/r/alpha')
-  },
-  'Create Room - Beta Private': function(browser) {
+  })
+
+  it.skip('should create a private room named Beta', function() {
     browser
       .click(els.createRoomLink)
       // Name "Beta"
@@ -52,8 +49,9 @@ module.exports = {
       .setValue(els.createRoomPassword, "beta-password")
       .click(els.createRoomSubmit)
       .assert.waitUrlEquals(host + '/room/login/beta')
-  },
-  'Failed Login to Room - Beta Private': function(browser) {
+  })
+
+  it.skip('should fail login to Beta with incorrect password', function() {
     var betaRoomSel = 'a[href*="beta"]'
     browser
       .assert.containsText(betaRoomSel, 'Beta')
@@ -64,8 +62,9 @@ module.exports = {
 	    .waitForElementVisible('body', 1000)
       .assert.urlContains(host + '/room/login/beta')
       .assert.containsText('.login-message', 'Password is incorrect')
-  },
-  'Successful Login to Room - Beta Private': function(browser) {
+  })
+
+  it.skip('should successfully login to Beta with correct password', function() {
     var betaRoomSel = 'a[href*="beta"]'
     browser
       .click(betaRoomSel)
@@ -74,5 +73,5 @@ module.exports = {
       .click(loginEls.loginRoomSubmit)
 	    .assert.waitUrlEquals(host + '/r/beta')
       .end()
-  }
-}
+  })
+})

@@ -29,8 +29,8 @@ var space = parseInt(process.env.WAIT) || (travis ? 3000 : 1000)
 setTimeout(function () {
   app_child = StartApp()
   if (!travis) {
-    var StartNightWatch = require('./start-nightwatch').StartNightWatch
-    setTimeout(StartNightWatch, space, node_cmd, app_port, app_child, mongod_child)
+    var StartWebdriverIO = require('./start-nightwatch').StartWebdriverIO
+    setTimeout(StartWebdriverIO, space, node_cmd, app_port, app_child, mongod_child)
   }
 }, space)
 
@@ -54,4 +54,3 @@ function StartApp () {
   process.env.APP_PORT = app_port
   return app_child
 }
-
