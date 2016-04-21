@@ -114,3 +114,290 @@ body {
 #textentryCancel {
     font-size:larger;
 }
+
+#first{
+}
+
+body {
+  margin: 0;
+}
+
+.videos {
+  position: absolute;
+  height: 90%;
+  width: 90%;
+  background: #dbdbdb;
+}
+.vid:hover{
+  opacity:0.9;
+}
+
+.vid:hover input {
+  display:block;
+}
+
+.videos input {
+  position: absolute;
+  display:none;
+}
+
+.vid input.hangUp{
+  left:0%;
+  bottom: 0%;
+}
+.vid input.muteAudio{
+  left:25%;
+  bottom: 0%;
+}
+.vid input.muteVideo{
+  left:50%;
+  bottom: 0%;
+}
+
+.vid {
+  background: #233333;
+  height: 2em;
+  width: 3em;
+  border: solid red 1px;
+  transition: all .5s;
+
+  display: block;
+  display: none;
+
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.vid:target {
+  background: lawngreen;
+}
+.container{
+  height:100%;
+  width: 100%;
+}
+
+.videos[data-capacity="1"] {
+  .vid {
+    position: absolute;
+    border-color: blue;
+  }
+  .vid:nth-child(1) {
+    width: 90%;
+    left: 5%;
+    top: 5%;
+    height: 90%;
+    display: block;
+  }
+}
+
+.videos[data-capacity="2"] {
+  .vid {
+    position: absolute;
+    border-color: blue;
+    top: 5%;
+  }
+  @media screen and (min-aspect-ratio: 1/1) {
+    .vid {
+      width: 45%;
+      height: 90%;
+    }
+    .vid:nth-child(1) {
+      left: 3.3333%;
+      display: block;
+    }
+    .vid:nth-child(2) {
+      left: 51.666%;
+      display: block;
+    }
+  }
+  @media screen and (max-aspect-ratio: 1/1) {
+    .vid {
+      width: 90%;
+      height: 45%;
+    }
+    .vid:nth-child(1) {
+      left: 3.3333%;
+      display: block;
+    }
+    .vid:nth-child(2) {
+      left: 51.666%;
+      display: block;
+    }
+  }
+}
+
+.videos[data-capacity="3"] {
+  .vid {
+    position: absolute;
+    border-color: blue;
+  }
+  .vid:nth-child(1) {
+    left: 28.3333%;
+    top: 51.6666%;
+    height: 45%;
+    width:45%;
+    display: block;
+  }
+  .vid:nth-child(2) {
+    top: 3.3333%;
+    left: 3.3333%;
+    width: 45%;
+    height: 45%;
+    display: block;
+  }
+  .vid:nth-child(3) {
+    top: 3.3333%;
+    left: 51.666%;
+    width: 45%;
+    height: 45%;
+    display: block;
+  }
+}
+
+.videos[data-capacity="4"] {
+  .vid {
+    position: absolute;
+    border-color: blue;
+  }
+  @media screen and (min-aspect-ratio: 1/1) {
+    .vid {
+      width: 45%;
+      height: 45%;
+    }
+    .vid:nth-child(1) {
+      top: 3.3333%;
+      left: 3.3333%;
+      display: block;
+    }
+    .vid:nth-child(2) {
+      top: 3.3333%;
+      left: 51.666%;
+      display: block;
+    }
+    .vid:nth-child(3) {
+      top: 51.6666%;
+      left: 3.3333%;
+      display: block;
+    }
+    .vid:nth-child(4) {
+      top: 51.66666%;
+      left: 51.666%;
+      display: block;
+    }
+  }
+}
+
+.videos[data-capacity="5"] {
+  .vid {
+    position: absolute;
+    border-color: blue;
+    width: 30%;
+    height: 45%;
+  }
+  .vid:nth-child(1) {
+    left: 2%;
+    top: 3.3333%;
+    display: block;
+  }
+  .vid:nth-child(2) {
+    top: 3.3333%;
+    left: 34%;
+    display: block;
+  }
+  .vid:nth-child(3) {
+    top: 3.3333%;
+    left: 66%;
+    display: block;
+  }
+  .vid:nth-child(4) {
+    top: 51.6666%;
+    left: 16.5%;
+    display: block;
+  }
+  .vid:nth-child(5) {
+    top: 51.6666%;
+    left: 53.5%;
+    display: block;
+  }
+}
+
+.videos[data-capacity="6"] {
+  .vid {
+    position: absolute;
+    border-color: blue;
+  }
+  @media screen and (min-aspect-ratio: 1/1) {
+    .vid {
+      width: 30%;
+      height: 45%;
+    }
+    .vid:nth-child(1) {
+      left: 2%;
+      top: 3.3333%;
+      display: block;
+    }
+    .vid:nth-child(2) {
+      top: 3.3333%;
+      left: 34%;
+      display: block;
+    }
+    .vid:nth-child(3) {
+      top: 3.3333%;
+      left: 66%;
+      display: block;
+    }
+    .vid:nth-child(4) {
+      top: 51.66666%;
+      left: 2%;
+      display: block;
+    }
+     .vid:nth-child(5) {
+      top: 51.66666%;
+      left: 34%;
+      display: block;
+    }
+     .vid:nth-child(6) {
+      top: 51.66666%;
+      left: 66%;
+      display: block;
+    }
+  }
+  @media screen and (max-aspect-ratio: 1/1) {
+    /*Needs optimizing*/
+    .vid {
+      width: 45%;
+      height: 30%;
+    }
+    .vid:nth-child(1) {
+      top: 2%;
+      left: 3.3333%;
+      display: block;
+    }
+    .vid:nth-child(2) {
+      left: 3.3333%;
+      top: 34%;
+      display: block;
+    }
+    .vid:nth-child(3) {
+      left: 3.3333%;
+      top: 66%;
+      display: block;
+    }
+    .vid:nth-child(4) {
+      left: 51.66666%;
+      top: 2%;
+      display: block;
+    }
+     .vid:nth-child(5) {
+      left: 51.66666%;
+      top: 34%;
+      display: block;
+    }
+     .vid:nth-child(6) {
+      left: 51.66666%;
+      top: 66%;
+      display: block;
+    }
+  }
+}
