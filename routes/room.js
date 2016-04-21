@@ -9,6 +9,7 @@ router.post('/create', function (req, res, next) {
     .replace(/\W+/g, '-')
     .replace(/^\-|\-$/g, '')
     .toLowerCase()
+  var trimmed_name = slug
 
   database.Room
   .findOne({ slug: slug })
@@ -28,7 +29,13 @@ router.post('/create', function (req, res, next) {
         message: "'" + req.body.Capacity + "' is an invalid input for capacity. Please enter a capacity between 2 and 6.",
         error: {}
       })
-    } else {
+    } else if(trimmed_name == ''){
+      // Makes sure the name of the room isn't empty or only spaces.
+      return res.render("error", {
+        message: "Sorry, room name can not be empty. Please enter another room name.",
+        error: {}
+      })
+    }else {
       // then
       var password = req.body.Password
       var roomDoc = new database.Room({
