@@ -16,102 +16,101 @@ function changeView(){
   document.getElementById("revertView").style.display = "block";
 }
 
-function plus(){
-  switch(connectCount) {
-    case 1:
+function addView(count){
+  switch(count-1) {
+    case 0:
       document.getElementById("vids").classList.remove("one");
       break;
-    case 2:
+    case 1:
       document.getElementById("vids").classList.remove("two");
       break;
-    case 3:
+    case 2:
       document.getElementById("vids").classList.remove("three");
       break;
-    case 4:
+    case 3:
       document.getElementById("vids").classList.remove("four");
       break;
-    case 5:
+    case 4:
       document.getElementById("vids").classList.remove("five");
       break;
-    case 6:
+    case 5:
       document.getElementById("vids").classList.remove("six");
       break;
+    default:
+      break;
   }
-  connectCount = connectCount+1;
-  switch(connectCount) {
-    case 1:
+  switch(count) {
+    case 0:
       document.getElementById("vids").classList.add("one");
       document.getElementById("focus-0").style.display = "block";
       break;
-    case 2:
+    case 1:
       document.getElementById("vids").classList.add("two");
       document.getElementById("focus-1").style.display = "block";
       break;
-    case 3:
+    case 2:
       document.getElementById("vids").classList.add("three");
       document.getElementById("focus-2").style.display = "block";
       break;
-    case 4:
+    case 3:
       document.getElementById("vids").classList.add("four");
       document.getElementById("focus-3").style.display = "block";
       break;
-    case 5:
+    case 4:
       document.getElementById("vids").classList.add("five");
       document.getElementById("focus-4").style.display = "block";
       break;
-    case 6:
+    case 5:
       document.getElementById("vids").classList.add("six");
       document.getElementById("focus-5").style.display = "block";
       break;
   }
-  return connectCount;
 }
 
-function minus(){
-  switch(connectCount) {
-    case 1:
+function removeView(count){
+  switch(count+1) {
+    case 0:
         document.getElementById("vids").classList.remove("one");
         document.getElementById("focus-0").style.display = "none";
         break;
-    case 2:
+    case 1:
         document.getElementById("vids").classList.remove("two");
         document.getElementById("focus-1").style.display = "none";
         break;
-    case 3:
+    case 2:
       document.getElementById("vids").classList.remove("three");
       document.getElementById("focus-2").style.display = "none";
       break;
-    case 4:
+    case 3:
       document.getElementById("vids").classList.remove("four");
       document.getElementById("focus-3").style.display = "none";
       break;
-    case 5:
+    case 4:
       document.getElementById("vids").classList.remove("five");
       document.getElementById("focus-4").style.display = "none";
       break;
-    case 6:
+    case 5:
       document.getElementById("vids").classList.remove("six");
       document.getElementById("focus-5").style.display = "none";
       break;
   }
-  connectCount = connectCount-1;
-  switch(connectCount) {
-     case 1:
+  switch(count) {
+     case 0:
         document.getElementById("vids").classList.add("one");
         break;
-    case 2:
+    case 1:
         document.getElementById("vids").classList.add("two");
         break;
-    case 3:
+    case 2:
       document.getElementById("vids").classList.add("three");
       break;
-    case 4:
+    case 3:
       document.getElementById("vids").classList.add("four");
       break;
-    case 5:
+    case 4:
       document.getElementById("vids").classList.add("five");
       break;
-    case 6:
+    case 5:
       document.getElementById("vids").classList.add("six");
       break;
   }
@@ -174,7 +173,7 @@ function callEverybodyElse(roomName, otherPeople) {
     //
     function establishConnection(position) {
         function callSuccess() {
-            plus(); //connectCount++;
+            connectCount++;
             if( connectCount < maxCALLERS && position > 0) {
                 establishConnection(position-1);
             }
@@ -212,6 +211,7 @@ function appInit(id) {
     easyrtc.setOnCall( function(easyrtcid, slot) {
         console.log("getConnection count="  + easyrtc.getConnectionCount() );
         boxUsed[slot+1] = true;
+        addView(easyrtc.getConnectionCount());
         //document.getElementById(getIdOfBox(slot+1)).style.visibility = "visible";
         //handleWindowResize();
     });
@@ -219,9 +219,11 @@ function appInit(id) {
 
     easyrtc.setOnHangup(function(easyrtcid, slot) {
         boxUsed[slot+1] = false;
-        minus(); //connectCount--;
+        connectCount--;
+        //remove a view somewhere here
         setTimeout(function() {
             document.getElementById(getIdOfBox(slot+1)).style.visibility = "hidden";
+            removeView(easyrtc.getConnectionCount());
 
             if( easyrtc.getConnectionCount() == 0 ) { // no more connections
                 //Close the room here
