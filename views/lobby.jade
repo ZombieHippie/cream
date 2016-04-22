@@ -2,6 +2,7 @@ extends layout
 
 block head
   link(rel='stylesheet' href='/stylesheets/lobby.css')
+  link(rel='stylesheet' href='/stylesheets/tablesorting.css')
 
 block content
   .lobby-header
@@ -12,23 +13,20 @@ block content
       a.btn.btn-primary(href="#create-room" role="button") Create Room
 
   div
-    table.table.table-bordered(style="background: white")
+    table(data-toggle='table', data-sort-name='name', data-sort-order='asc')
       thead
         tr
-          th Name
-          th(style="width: 2em;") Capacity
-          th(style="width: 1em;") Private
+          th(data-field='name', data-sortable='true') Name
+          th(style="width: 2em;", data-field='capacity_size', data-sortable='true') Capacity
+          th(style="width: 1em;", data-field='privacy_check', data-sortable='true') Private
       tbody
         each room in rooms
           tr(class=(room.capacity > 1 ? '': 'table-warning'))
             td
-              if room.private
-                a(href='/room/login/' + room.slug)= room.name
-              else
-                a(href='/r/' + room.slug)= room.name
-            td(style="width: 2em;")
+              a(href='/r/' + room.slug)= room.name
+            td
               .label.label-default.label-pill=room.capacity
-            td(style="width: 1em;")
+            td
               if room.private
                 span &#128274;
 
@@ -68,3 +66,4 @@ block content
       p= name
 block javascript
   script(src="/script/clientLobby.js")
+  script(src="/script/tablesorting.js")
