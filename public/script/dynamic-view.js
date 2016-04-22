@@ -17,6 +17,11 @@ function changeView(){
 }
 
 function addView(count){
+  console.log("adding a view for " + easyrtc.getConnectionCount())
+  if (easyrtc.getConnectionCount()>0){
+    document.getElementById("vids").classList.remove("one");
+    //when someone joins a room with more than one person, it is bypassing one
+  }
   switch(count-1) {
     case 0:
       document.getElementById("vids").classList.remove("one");
@@ -114,7 +119,6 @@ function removeView(count){
       document.getElementById("vids").classList.add("six");
       break;
   }
-  return connectCount;
 }
 //End video functions------------------------------------------------
 
@@ -226,7 +230,8 @@ function appInit(id) {
             removeView(easyrtc.getConnectionCount());
 
             if( easyrtc.getConnectionCount() == 0 ) { // no more connections
-                //Close the room here
+                //No more connections to the host. Host could still be in room
+                //Close the room here.
 
 
                 //document.getElementById('textEntryButton').style.display = 'none';
