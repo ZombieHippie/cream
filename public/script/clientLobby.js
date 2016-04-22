@@ -7,9 +7,8 @@ function showCreateRoom() {
   })
 }
 
-// make a reference 
+// make a reference
 var userPassEl = document.querySelector('#create-room [name=Password]')
 function setPasswordDisabled (disabled) {
   userPassEl.disabled = disabled;
 }
-
