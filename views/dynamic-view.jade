@@ -1,14 +1,34 @@
-#fullpage.boxCommon
-  video#box0.transit.boxCommon.thumbCommon.easyRTCMirror(muted='muted', volume='0')
-  video#box1.transit.boxCommon.thumbCommon(style='visibility:hidden')
-  video#box2.transit.boxCommon.thumbCommon(style='visibility:hidden')
-  video#box3.transit.boxCommon.thumbCommon(style='visibility:hidden')
-  #textentryBox(onsubmit='sendText()', style='display:none')
-    input#textentryField.transit.boxcommon(type='text')
-    br
-    button#textentrySubmit(style='float:right;margin-right:1em', onclick='sendText()') Send
-    button#textentryCancel(style='float:left;margin-left:1em', onclick='cancelText()') Cancel
-  img#killButton.transit.boxCommon(onclick='killActiveBox()', src='../images/button_close2.png', style='display:none;z-index:3', alt='close button')
-  img#muteButton.transit.boxCommon(onclick='muteActiveBox()', src='../images/button_mute.png', style='display:none;z-index:3', alt='muteButton')
-  img#textEntryButton.transit.boxCommon(onclick='showTextEntry()', src='../images/textEntry.png', style='z-index:3;display:none', alt='text button')
-
+#vids.videos.one
+  a.vid(id="focus-0" href="#focus-0" onclick="changeView()")
+    video.setSpace(id="box0")
+    input.hangUp(type='image' alt='hangUp' value='hangUp', src='../images/hangup.svg')
+    input.muteAudio(type='image', alt='Mute Audio',  value='muteAudio' src='../images/audio.svg')
+    input.muteVideo(type='image', alt='Mute Video', value='muteVid' src='../images/video.svg')
+  a.vid(id="focus-1" href="#focus-1" onclick="changeView()")
+    video.setSpace(id="box1")
+    input.hangUp(type='image' alt='hangUp' value='hangUp', src='../images/hangup.svg')
+    input.muteAudio(type='image', alt='Mute Audio',  value='muteAudio' src='../images/audio.svg')
+    input.muteVideo(type='image', alt='Mute Video', value='muteVid' src='../images/video.svg')
+  a.vid(id="focus-2" href="#focus-2" onclick="changeView()")
+    video.setSpace(id="box2")
+    input.hangUp(type='image' alt='hangUp' value='hangUp', src='../images/hangup.svg')
+    input.muteAudio(type='image', alt='Mute Audio',  value='muteAudio' src='../images/audio.svg')
+    input.muteVideo(type='image', alt='Mute Video', value='muteVid' src='../images/video.svg')
+  a.vid(id="focus-3" href="#focus-3" onclick="changeView()")
+    video.setSpace(id="box3")
+    input.hangUp(type='image' alt='hangUp' value='hangUp', src='../images/hangup.svg')
+    input.muteAudio(type='image', alt='Mute Audio',  value='muteAudio' src='../images/audio.svg')
+    input.muteVideo(type='image', alt='Mute Video', value='muteVid' src='../images/video.svg')
+  a.vid(id="focus-4" href="#focus-4" onclick="changeView()")
+    video.setSpace(id="box4")
+    input.hangUp(type='image' alt='hangUp' value='hangUp', src='../images/hangup.svg')
+    input.muteAudio(type='image', alt='Mute Audio',  value='muteAudio' src='../images/audio.svg')
+    input.muteVideo(type='image', alt='Mute Video', value='muteVid' src='../images/video.svg')
+  a.vid(id="focus-5" href="#focus-5" onclick="changeView()")
+    video.setSpace(id="box5")
+    input.hangUp(type='image' alt='hangUp' value='hangUp', src='../images/hangup.svg')
+    input.muteAudio(type='image', alt='Mute Audio',  value='muteAudio' src='../images/audio.svg')
+    input.muteVideo(type='image', alt='Mute Video', value='muteVid' src='../images/video.svg')
+  input#revertView(type='image' alt='RevertView' value='revertView' src='../images/revert.png' onclick='revert()')
+      
+    

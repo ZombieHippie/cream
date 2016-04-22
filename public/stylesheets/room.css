@@ -10,21 +10,18 @@
   font-size: 16px;
   display: inline-block;
 }
-
 .room-top-bar .is-admin {
   width: 16px;
   height: 16px;
   background: gold;
-  display:inline-block;
+  display: inline-block;
   margin-left: 10vw;
 }
-
 .room-top-bar .is-private {
   position: absolute;
   right: 1em;
   top: 1em;
 }
-
 .action-buttons {
   position: absolute;
   left: 0;
@@ -33,371 +30,493 @@
   text-align: center;
   z-index: 900;
 }
-
 /* While video is loading */
 video {
   background-image: url(/images/background.gif);
   background-size: cover;
 }
-
 /* EASY RTC STYLES vvv */
-
 .transit {
-    transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, transform 1s;
-    -moz-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -moz-transform 1s;
-    -webkit-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -webkit-transform 1s;
-    -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
+  transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, transform 1s;
+  -moz-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -moz-transform 1s;
+  -webkit-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -webkit-transform 1s;
+  -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -o-transform 1s;
 }
-
-.hidden {
-    background-color: transparent;
-    border-color: 2px solid blue;
+body .dynamic-view,
+body .page {
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
 }
-
-.boxCommon {
-    position:absolute;
-}
-
-.closeButton {
-    display: none; /* hide the easyApp's close button because we have our own */
-}
-
-.thumbCommon {
-    z-index:2;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-#controlArea {
-    background-color: #ff8000;
-}
-
+/*Begin new css---------------------------------------------------------------*/
 body {
-    margin-left:0px;
-    margin-top:0px;
+  margin: auto;
 }
-
-#killButton {
-    opacity:0.7;
+#m {
+  left: 7%;
+  top: 2%;
+  height: 5%;
+  width: 5%;
+  display: block;
 }
-
-#killButton:hover {
-    opacity:1.0;
+#p {
+  left: 2%;
+  top: 2%;
+  height: 5%;
+  width: 5%;
+  display: block;
 }
-
-#muteButton {
-    opacity:0.7;
+#revertView {
+  right: 2%;
+  top: 2%;
+  height: 5%;
+  width: 5%;
+  display: none;
 }
-
-#muteButton:hover {
-    opacity:1.0;
-}
-
-#textentryBox {
-    border:2px solid #a0ffa0;
-    border-radius:10px;
-    z-index:5;
-    position: absolute;
-    background-color: #ffffff;
-    box-shadow: 5px 5px 5px #000000;
-    font-family: 'Courier New',Courier,monospace;
-}
-
-#textentryField {
-    font-size:x-large;
-    margin: 20px;
-}
-
-#textentrySubmit {
-    font-size:larger;
-}
-
-#textentryCancel {
-    font-size:larger;
-}
-
-#first{
-}
-
-body {
-  margin: 0;
-}
-
 .videos {
-  position: absolute;
-  height: 90%;
-  width: 90%;
+  /*position: absolute;*/
   background: #dbdbdb;
+  height: 100%;
+  width: 100%;
 }
-.vid:hover{
-  opacity:0.9;
+.vid:hover {
+  opacity: 0.8;
 }
-
 .vid:hover input {
-  display:block;
+  display: block;
+  bottom: 0%;
 }
-
 .videos input {
   position: absolute;
-  display:none;
+  width: 10%;
+  height: 10%;
+  display: none;
 }
-
-.vid input.hangUp{
-  left:0%;
-  bottom: 0%;
+.vid input.hangUp {
+  right: 0%;
 }
-.vid input.muteAudio{
-  left:25%;
-  bottom: 0%;
+.vid input.muteVideo {
+  right: 17%;
 }
-.vid input.muteVideo{
-  left:50%;
-  bottom: 0%;
+.vid input.muteAudio {
+  right: 34%;
 }
-
 .vid {
   background: #233333;
   height: 2em;
   width: 3em;
   border: solid red 1px;
   transition: all .5s;
-
-  display: block;
+  z-index: 0;
   display: none;
-
-  color: white;
-  font-weight: bold;
-  font-size: 3em;
 }
+/*.vid:target{
+  need to resize target to be big
+  and resize others to be small.
 
-.vid:target {
+  Needs to be in videos tag
   background: lawngreen;
-}
-.container{
-  height:100%;
   width: 100%;
+  height:100%;
 }
-
-.videos[data-capacity="1"] {
-  .vid {
+*/
+/*.videos .vid:target{
+  background: blue;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 75%;
+  height:60%;
+}*/
+.setSpace {
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+.one {
+  /*.vid:target{
+    background: blue;
     position: absolute;
-    border-color: blue;
-  }
-  .vid:nth-child(1) {
-    width: 90%;
+    top: 5%;
     left: 5%;
-    top: 5%;
+    width: 75%;
+    height:60%;
+  }*/
+}
+.one .vid {
+  position: absolute;
+}
+.one .vid:nth-child(1) {
+  width: 90%;
+  left: 5%;
+  top: 5%;
+  height: 90%;
+  display: block;
+}
+.two .vid {
+  position: absolute;
+  border-color: blue;
+  top: 5%;
+}
+@media screen and (min-aspect-ratio: 1/1) {
+  .two .vid {
+    width: 45%;
     height: 90%;
+  }
+  .two .vid:nth-child(1) {
+    left: 3.3333%;
+    display: block;
+  }
+  .two .vid:nth-child(2) {
+    left: 51.666%;
     display: block;
   }
 }
-
-.videos[data-capacity="2"] {
-  .vid {
-    position: absolute;
-    border-color: blue;
-    top: 5%;
-  }
-  @media screen and (min-aspect-ratio: 1/1) {
-    .vid {
-      width: 45%;
-      height: 90%;
-    }
-    .vid:nth-child(1) {
-      left: 3.3333%;
-      display: block;
-    }
-    .vid:nth-child(2) {
-      left: 51.666%;
-      display: block;
-    }
-  }
-  @media screen and (max-aspect-ratio: 1/1) {
-    .vid {
-      width: 90%;
-      height: 45%;
-    }
-    .vid:nth-child(1) {
-      left: 3.3333%;
-      display: block;
-    }
-    .vid:nth-child(2) {
-      left: 51.666%;
-      display: block;
-    }
-  }
-}
-
-.videos[data-capacity="3"] {
-  .vid {
-    position: absolute;
-    border-color: blue;
-  }
-  .vid:nth-child(1) {
-    left: 28.3333%;
-    top: 51.6666%;
+@media screen and (max-aspect-ratio: 1/1) {
+  .two .vid {
+    width: 90%;
     height: 45%;
-    width:45%;
+  }
+  .two .vid:nth-child(1) {
+    left: 3.3333%;
     display: block;
   }
-  .vid:nth-child(2) {
+  .two .vid:nth-child(2) {
+    left: 51.666%;
+    display: block;
+  }
+}
+.three {
+  /*TODO add min and max aspec ratio*/
+}
+.three .vid {
+  position: absolute;
+  border-color: blue;
+  height: 45%;
+  width: 45%;
+}
+.three .vid:nth-child(1) {
+  left: 28.3333%;
+  top: 51.6666%;
+  display: block;
+}
+.three .vid:nth-child(2) {
+  top: 3.3333%;
+  left: 3.3333%;
+  display: block;
+}
+.three .vid:nth-child(3) {
+  top: 3.3333%;
+  left: 51.666%;
+  display: block;
+}
+.four {
+  /*TODO add max aspec ratio*/
+}
+.four .vid {
+  position: absolute;
+  border-color: blue;
+}
+@media screen and (min-aspect-ratio: 1/1) {
+  .four .vid {
+    width: 45%;
+    height: 45%;
+  }
+  .four .vid:nth-child(1) {
     top: 3.3333%;
     left: 3.3333%;
-    width: 45%;
-    height: 45%;
     display: block;
   }
-  .vid:nth-child(3) {
+  .four .vid:nth-child(2) {
     top: 3.3333%;
     left: 51.666%;
-    width: 45%;
-    height: 45%;
+    display: block;
+  }
+  .four .vid:nth-child(3) {
+    top: 51.6666%;
+    left: 3.3333%;
+    display: block;
+  }
+  .four .vid:nth-child(4) {
+    top: 51.66666%;
+    left: 51.666%;
     display: block;
   }
 }
-
-.videos[data-capacity="4"] {
-  .vid {
-    position: absolute;
-    border-color: blue;
-  }
-  @media screen and (min-aspect-ratio: 1/1) {
-    .vid {
-      width: 45%;
-      height: 45%;
-    }
-    .vid:nth-child(1) {
-      top: 3.3333%;
-      left: 3.3333%;
-      display: block;
-    }
-    .vid:nth-child(2) {
-      top: 3.3333%;
-      left: 51.666%;
-      display: block;
-    }
-    .vid:nth-child(3) {
-      top: 51.6666%;
-      left: 3.3333%;
-      display: block;
-    }
-    .vid:nth-child(4) {
-      top: 51.66666%;
-      left: 51.666%;
-      display: block;
-    }
-  }
+.five {
+  /*TODO add max aspec ratio*/
 }
-
-.videos[data-capacity="5"] {
-  .vid {
+@media screen and (min-aspect-ratio: 1/1) {
+  .five .vid {
     position: absolute;
-    border-color: blue;
     width: 30%;
     height: 45%;
   }
-  .vid:nth-child(1) {
+  .five .vid:nth-child(1) {
     left: 2%;
     top: 3.3333%;
     display: block;
   }
-  .vid:nth-child(2) {
+  .five .vid:nth-child(2) {
     top: 3.3333%;
     left: 34%;
     display: block;
   }
-  .vid:nth-child(3) {
+  .five .vid:nth-child(3) {
     top: 3.3333%;
     left: 66%;
     display: block;
   }
-  .vid:nth-child(4) {
+  .five .vid:nth-child(4) {
     top: 51.6666%;
     left: 16.5%;
     display: block;
   }
-  .vid:nth-child(5) {
+  .five .vid:nth-child(5) {
     top: 51.6666%;
     left: 53.5%;
     display: block;
   }
 }
-
-.videos[data-capacity="6"] {
-  .vid {
-    position: absolute;
-    border-color: blue;
+.six .vid {
+  position: absolute;
+  display: block;
+}
+@media screen and (min-aspect-ratio: 1/1) {
+  .six .vid {
+    width: 30%;
+    height: 45%;
   }
-  @media screen and (min-aspect-ratio: 1/1) {
-    .vid {
-      width: 30%;
-      height: 45%;
-    }
-    .vid:nth-child(1) {
-      left: 2%;
-      top: 3.3333%;
-      display: block;
-    }
-    .vid:nth-child(2) {
-      top: 3.3333%;
-      left: 34%;
-      display: block;
-    }
-    .vid:nth-child(3) {
-      top: 3.3333%;
-      left: 66%;
-      display: block;
-    }
-    .vid:nth-child(4) {
-      top: 51.66666%;
-      left: 2%;
-      display: block;
-    }
-     .vid:nth-child(5) {
-      top: 51.66666%;
-      left: 34%;
-      display: block;
-    }
-     .vid:nth-child(6) {
-      top: 51.66666%;
-      left: 66%;
-      display: block;
-    }
+  .six .vid:nth-child(1) {
+    left: 2%;
+    top: 3.3333%;
   }
-  @media screen and (max-aspect-ratio: 1/1) {
+  .six .vid:nth-child(2) {
+    top: 3.3333%;
+    left: 34%;
+  }
+  .six .vid:nth-child(3) {
+    top: 3.3333%;
+    left: 66%;
+  }
+  .six .vid:nth-child(4) {
+    top: 51.66666%;
+    left: 2%;
+  }
+  .six .vid:nth-child(5) {
+    top: 51.66666%;
+    left: 34%;
+  }
+  .six .vid:nth-child(6) {
+    top: 51.66666%;
+    left: 66%;
+  }
+}
+@media screen and (max-aspect-ratio: 1/1) {
+  .six {
     /*Needs optimizing*/
-    .vid {
-      width: 45%;
-      height: 30%;
-    }
-    .vid:nth-child(1) {
-      top: 2%;
-      left: 3.3333%;
-      display: block;
-    }
-    .vid:nth-child(2) {
-      left: 3.3333%;
-      top: 34%;
-      display: block;
-    }
-    .vid:nth-child(3) {
-      left: 3.3333%;
-      top: 66%;
-      display: block;
-    }
-    .vid:nth-child(4) {
-      left: 51.66666%;
-      top: 2%;
-      display: block;
-    }
-     .vid:nth-child(5) {
-      left: 51.66666%;
-      top: 34%;
-      display: block;
-    }
-     .vid:nth-child(6) {
-      left: 51.66666%;
-      top: 66%;
-      display: block;
-    }
   }
+  .six .vid {
+    width: 45%;
+    height: 30%;
+  }
+  .six .vid:nth-child(1) {
+    top: 2%;
+    left: 3.3333%;
+  }
+  .six .vid:nth-child(2) {
+    left: 3.3333%;
+    top: 34%;
+  }
+  .six .vid:nth-child(3) {
+    left: 3.3333%;
+    top: 66%;
+  }
+  .six .vid:nth-child(4) {
+    left: 51.66666%;
+    top: 2%;
+  }
+  .six .vid:nth-child(5) {
+    left: 51.66666%;
+    top: 34%;
+  }
+  .six .vid:nth-child(6) {
+    left: 51.66666%;
+    top: 66%;
+  }
+}
+.getsmall.two .vid:not(:target) {
+  position: absolute;
+  width: 15%;
+  height: 30%;
+}
+.getsmall.two .vid:nth-child(1) {
+  left: 0%;
+  top: 67.5%;
+  display: block;
+  /*top level vid not overriding?*/
+}
+.getsmall.two .vid:nth-child(2) {
+  left: 17%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.two .vid:target {
+  /*needs to be in each videos class tag?*/
+  background: blue;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
+}
+.getsmall.three .vid:not(:target) {
+  position: absolute;
+  display: none;
+  width: 15%;
+  height: 30%;
+}
+.getsmall.three .vid:nth-child(1) {
+  left: 0%;
+  top: 67.5%;
+  display: block;
+  /*top level vid not
+    overriding?*/
+}
+.getsmall.three .vid:nth-child(2) {
+  left: 17%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.three .vid:nth-child(3) {
+  left: 34%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.three .vid:target {
+  /*needs to be in each videos class tag?*/
+  background: blue;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
+}
+.getsmall.four .vid:not(:target) {
+  position: absolute;
+  width: 15%;
+  height: 30%;
+}
+.getsmall.four .vid:nth-child(1) {
+  left: 0%;
+  top: 67.5%;
+  display: block;
+  /*top level vid not overriding?*/
+}
+.getsmall.four .vid:nth-child(2) {
+  left: 17%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.four .vid:nth-child(3) {
+  left: 34%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.four .vid:nth-child(4) {
+  left: 51%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.four .vid:target {
+  /*needs to be in each videos class tag?*/
+  background: blue;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
+}
+.getsmall.five .vid {
+  position: absolute;
+  width: 15%;
+  height: 30%;
+}
+.getsmall.five .vid:nth-child(1) {
+  left: 0%;
+  top: 67.5%;
+  display: block;
+  /*top level vid not overriding?*/
+}
+.getsmall.five .vid:nth-child(2) {
+  left: 17%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.five .vid:nth-child(3) {
+  left: 34%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.five .vid:nth-child(4) {
+  left: 51%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.five .vid:nth-child(5) {
+  left: 68%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall.five .vid:target {
+  /*needs to be in each videos class tag?*/
+  background: blue;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
+}
+.getsmall.six .vid {
+  position: absolute;
+  display: block;
+  width: 15%;
+  height: 30%;
+}
+.getsmall.six .vid:nth-child(1) {
+  left: 0%;
+  top: 67.5%;
+  /*top level vid not overriding?*/
+}
+.getsmall.six .vid:nth-child(2) {
+  left: 17%;
+  top: 67.5%;
+}
+.getsmall.six .vid:nth-child(3) {
+  left: 34%;
+  top: 67.5%;
+}
+.getsmall.six .vid:nth-child(4) {
+  left: 51%;
+  top: 67.5%;
+}
+.getsmall.six .vid:nth-child(5) {
+  left: 68%;
+  top: 67.5%;
+}
+.getsmall.six .vid:nth-child(6) {
+  left: 85%;
+  top: 67.5%;
+}
+.getsmall.six .vid:target {
+  /*needs to be in each videos class tag?*/
+  background: blue;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
 }
