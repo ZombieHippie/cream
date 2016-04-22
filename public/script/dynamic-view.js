@@ -125,7 +125,7 @@ function removeView(count){
 easyrtc.dontAddCloseButtons(true);
 
 function getIdOfBox(boxNum) {
-    return "box" + boxNum;
+    return "video" + boxNum;
 }
 
 var boxUsed = [true, false, false, false, false, false];
@@ -207,7 +207,7 @@ function appInit(id) {
 
 
     easyrtc.setRoomOccupantListener(callEverybodyElse);
-    window.onload = easyrtc.easyApp("creamstream." + String(id), "box0", ["box1", "box2", "box3", "box4", "box5"], loginSuccess);
+    window.onload = easyrtc.easyApp("creamstream." + String(id), getIdOfBox(0), [1,2,3,4,5].map(getIdOfBox), loginSuccess);
     //easyrtc.setPeerListener(messageListener);
     easyrtc.setDisconnectListener( function() {
         easyrtc.showError("LOST-CONNECTION", "Lost connection to signaling server");
@@ -215,19 +215,38 @@ function appInit(id) {
     easyrtc.setOnCall( function(easyrtcid, slot) {
         console.log("getConnection count="  + easyrtc.getConnectionCount() );
         boxUsed[slot+1] = true;
-        addView(easyrtc.getConnectionCount());
+        //addView(easyrtc.getConnectionCount());
         //document.getElementById(getIdOfBox(slot+1)).style.visibility = "visible";
         //handleWindowResize();
+        updateCapacity()
     });
 
+
+    //updates capacity and selects divs
+    //bypasses errors created when say user 2 leave the room of 4 people.
+    //Needs to show videos of users 1, 3, 4 still
+    function updateCapacity () {
+        var newIndex = 0
+        boxUsed.forEach((active, index) => {
+          if (active) {
+            document.getElementById("focus-"+index).dataset.roomIndex = newIndex+1
+            //document.getElementById("focus-"+index).style.display = "block"
+            newIndex++
+          }
+        })
+        document.querySelector("#vids.videos").dataset.capacity = newIndex
+    }
 
     easyrtc.setOnHangup(function(easyrtcid, slot) {
         boxUsed[slot+1] = false;
         connectCount--;
+
+        updateCapacity()
+
         //remove a view somewhere here
         setTimeout(function() {
             document.getElementById(getIdOfBox(slot+1)).style.visibility = "hidden";
-            removeView(easyrtc.getConnectionCount());
+            //removeView(easyrtc.getConnectionCount());
 
             if( easyrtc.getConnectionCount() == 0 ) { // no more connections
                 //No more connections to the host. Host could still be in room
