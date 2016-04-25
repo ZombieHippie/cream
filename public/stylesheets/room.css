@@ -24,9 +24,9 @@
 }
 .action-buttons {
   position: absolute;
-  left: 0;
+  right: 1%;
   top: .5em;
-  width: 100%;
+  /*width: 100%;*/
   text-align: center;
   z-index: 900;
 }

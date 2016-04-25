@@ -15,8 +15,8 @@ function changeView(){
   document.getElementById("vids").classList.add("getsmall");
   document.getElementById("revertView").style.display = "block";
 }
-
-function addView(count){
+//addView and removeView may no longer be necessary. Kept for reference
+/*function addView(count){
   console.log("adding a view for " + easyrtc.getConnectionCount())
   if (easyrtc.getConnectionCount()>0){
     document.getElementById("vids").classList.remove("one");
@@ -119,7 +119,7 @@ function removeView(count){
       document.getElementById("vids").classList.add("six");
       break;
   }
-}
+}*/
 //End video functions------------------------------------------------
 
 easyrtc.dontAddCloseButtons(true);
@@ -131,26 +131,45 @@ function getIdOfBox(boxNum) {
 var boxUsed = [true, false, false, false, false, false];
 var connectCount = 0;
 
-function updateMuteImage(toggle) {
-    var muteButton = document.getElementById('muteButton');
-    if( activeBox > 0) { // no kill button for self video
-        muteButton.style.display = "block";
-        var videoObject = document.getElementById( getIdOfBox(activeBox));
-        var isMuted = videoObject.muted?true:false;
-        if( toggle) {
-            isMuted = !isMuted;
-            videoObject.muted = isMuted;
-        }
-        muteButton.src = isMuted?"../images/button_unmute.png":"../images/button_mute.png";
-    }
-    else {
-        muteButton.style.display = "none";
-    }
+function muteAudio(element) {
+    var id = element.id;
+    var muteButton = document.getElementById(id);
+    //if( activeBox > 0) { // no kill button for self video
+    id = parseInt(id);
+    var videoObject = document.getElementById( getIdOfBox(id));
+    var isMuted = videoObject.muted?true:false;
+    isMuted = !isMuted;
+    videoObject.muted = isMuted;
+    muteButton.src = isMuted?"../images/muted.svg":"../images/audio.svg";
+    //}
 }
-
-function killActiveBox() {
-    if( activeBox > 0) {
-        var easyrtcid = easyrtc.getIthCaller(activeBox-1);
+function muteVideo(element) { //currently also mutes sound. find a way around this maybe just hide the video tag?
+    var id = element.id;
+    var muteButton = document.getElementById(id);
+    id = parseInt(id);
+    var videoObject = document.getElementById( getIdOfBox(id));
+    var paused = videoObject.paused?true:false;
+    paused = !paused;
+    console.log(paused)
+    if (!paused){
+      videoObject.play();
+    } else{
+      videoObject.pause();
+    }
+    muteButton.src = paused?"../images/videomute.svg":"../images/video.svg";
+}
+function hangUp2(){
+  window.location = "https://localhost:3000/lobby"; //testing
+  //window.location = "https://creamstream.azurewebsites.net";
+}
+//hangUp is not needed at the moment.
+function hangUp(element) {
+  var id = element.id;
+  id = parseInt(id);
+  console.log("id")
+  if( id > 0) {
+        console.log("hanging up")
+        var easyrtcid = easyrtc.getIthCaller(id-1);
         //collapseToThumb();
         setTimeout( function() {
             easyrtc.hangup(easyrtcid);
@@ -198,13 +217,18 @@ function callEverybodyElse(roomName, otherPeople) {
 
 
 function loginSuccess() {
-    console.log("connecting");  // expand the mirror image initially.
+    console.log("Connecting...");  // expand the mirror image initially.
 }
 
 // https://github.com/priologic/easyrtc/blob/f57190db98d2a25dc63067878448feda1b0d847a/api/easy_app.js#L276
 function appInit(id) {
-    console.log("Connecting to '" + id + "'")
-
+    console.log("Connecting to room'" + id + "'")
+    if(easyrtc.getConnectionCount()==0){
+      //host user should be muted and doesn't need the option to unmute
+      document.getElementById("video0").muted = "muted";
+      document.getElementById("0muteaudio").style.display = "none";
+      updateCapacity();
+    }
 
     easyrtc.setRoomOccupantListener(callEverybodyElse);
     window.onload = easyrtc.easyApp("creamstream." + String(id), getIdOfBox(0), [1,2,3,4,5].map(getIdOfBox), loginSuccess);
@@ -215,10 +239,9 @@ function appInit(id) {
     easyrtc.setOnCall( function(easyrtcid, slot) {
         console.log("getConnection count="  + easyrtc.getConnectionCount() );
         boxUsed[slot+1] = true;
-        //addView(easyrtc.getConnectionCount());
         //document.getElementById(getIdOfBox(slot+1)).style.visibility = "visible";
         //handleWindowResize();
-        updateCapacity()
+        updateCapacity();
     });
 
 
@@ -229,12 +252,12 @@ function appInit(id) {
         var newIndex = 0
         boxUsed.forEach((active, index) => {
           if (active) {
-            document.getElementById("focus-"+index).dataset.roomIndex = newIndex+1
+            document.getElementById("focus-"+index).dataset.roomIndex = newIndex+1;
             //document.getElementById("focus-"+index).style.display = "block"
-            newIndex++
+            newIndex++;
           }
         })
-        document.querySelector("#vids.videos").dataset.capacity = newIndex
+        document.querySelector("#vids.videos").dataset.capacity = newIndex;
     }
 
     easyrtc.setOnHangup(function(easyrtcid, slot) {
@@ -245,18 +268,14 @@ function appInit(id) {
 
         //remove a view somewhere here
         setTimeout(function() {
-            document.getElementById(getIdOfBox(slot+1)).style.visibility = "hidden";
+            //document.getElementById(getIdOfBox(slot+1)).style.visibility = "hidden";
             //removeView(easyrtc.getConnectionCount());
 
             if( easyrtc.getConnectionCount() == 0 ) { // no more connections
                 //No more connections to the host. Host could still be in room
                 //Close the room here.
 
-
-                //document.getElementById('textEntryButton').style.display = 'none';
-                //document.getElementById('textentryBox').style.display = 'none';
             }
-            //handleWindowResize();
         },20);
     });
 }
