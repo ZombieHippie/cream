@@ -3,8 +3,9 @@
 #vids.videos(data-capacity=cap)
   each _, n in Array(cap)
     a.vid(id="focus-" + n href="#focus-" + n onclick="changeView()")
-      video.setSpace(id="video" + n)
-      input.hangUp(id=n+"hangup" type='image' alt='hangUp' value='hangUp' src='../images/hangup.svg' onclick='hangUp2()')
-      input.muteAudio(id=n+"muteaudio" type='image', alt='Mute Audio',  value='muteAudio' src='../images/audio.svg' onclick='muteAudio(this)')
-      input.muteVideo(id=n+"mutevideo" type='image', alt='Mute Video', value='muteVid' src='../images/video.svg' onclick='muteVideo(this)')
+      video.setSpace(id="video" + n )
+      .video-actions
+        input.hangUp(id=n+"hangup" type='image' alt='hangUp' value='hangUp' src='../images/hangup.svg' onclick='hangUp2()')
+        input.muteAudio(id=n+"muteaudio" type='image', alt='Mute Audio',  value='muteAudio' src='../images/audio.svg' onclick='muteAudio(this)')
+        input.muteVideo(id=n+"mutevideo" type='image', alt='Mute Video', value='muteVid' src='../images/video.svg' onclick='muteVideo(this)')
   input#revertView(type='image' alt='RevertView' value='revertView' src='../images/revert.png' onclick='revert()')

@@ -131,9 +131,8 @@ function getIdOfBox(boxNum) {
 var boxUsed = [true, false, false, false, false, false];
 var connectCount = 0;
 
-function muteAudio(element) {
-    var id = element.id;
-    var muteButton = document.getElementById(id);
+function muteAudio(muteButton) {
+    var id = muteButton.id;
     //if( activeBox > 0) { // no kill button for self video
     id = parseInt(id);
     var videoObject = document.getElementById( getIdOfBox(id));
@@ -143,18 +142,18 @@ function muteAudio(element) {
     muteButton.src = isMuted?"../images/muted.svg":"../images/audio.svg";
     //}
 }
-function muteVideo(element) { //currently also mutes sound. find a way around this maybe just hide the video tag?
-    var id = element.id;
-    var muteButton = document.getElementById(id);
+function muteVideo(muteButton) { //currently also mutes sound. find a way around this maybe just hide the video tag?
+    var id = muteButton.id;
     id = parseInt(id);
     var videoObject = document.getElementById( getIdOfBox(id));
-    var paused = videoObject.paused?true:false;
-    paused = !paused;
-    console.log(paused)
-    if (!paused){
-      videoObject.play();
+    if (videoObject.style.visibility=='hidden'){
+      //videoObject.play();  //pause and play mute audio as well
+      videoObject.style.visibility='visible';
+      var paused = false;
     } else{
-      videoObject.pause();
+      //videoObject.pause();
+      videoObject.style.visibility='hidden';
+      var paused = true;
     }
     muteButton.src = paused?"../images/videomute.svg":"../images/video.svg";
 }
@@ -164,16 +163,16 @@ function hangUp2(){
 }
 //hangUp is not needed at the moment.
 function hangUp(element) {
-  var id = element.id;
-  id = parseInt(id);
+  var id = element.id
+  id = parseInt(id)
   console.log("id")
   if( id > 0) {
         console.log("hanging up")
-        var easyrtcid = easyrtc.getIthCaller(id-1);
-        //collapseToThumb();
+        var easyrtcid = easyrtc.getIthCaller(id-1)
+        //collapseToThumb()
         setTimeout( function() {
-            easyrtc.hangup(easyrtcid);
-        }, 400);
+            easyrtc.hangup(easyrtcid)
+        }, 400)
     }
 }
 

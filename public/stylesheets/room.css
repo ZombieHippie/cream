@@ -31,7 +31,8 @@
   z-index: 900;
 }
 /* While video is loading */
-video {
-  background-image: url(/images/background.gif);
+.videos a {
+  /*background-image: url(/images/background.gif);*/
+  background-color: black;
   background-size: cover;
 }
