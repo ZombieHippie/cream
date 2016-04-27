@@ -1,0 +1,460 @@
+/* EASY RTC STYLES vvv */
+.transit {
+  transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, transform 1s;
+  -moz-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -moz-transform 1s;
+  -webkit-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -webkit-transform 1s;
+  -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -o-transform 1s;
+}
+body .dynamic-view,
+body .page {
+  padding: 0px;
+  width: 100%;
+  text-align: center;
+}
+/*Begin new css---------------------------------------------------------------*/
+body {
+  margin: auto;
+}
+#revertView {
+  right: 0%;
+  bottom: 0%;
+  height: 5%;
+  width: 3.5%;
+  display: none;
+}
+.videos {
+  /*position: absolute;*/
+  background: #dbdbdb;
+  height: 100%;
+  width: 100%;
+}
+.vid .video-actions{
+  /*move button positions here*/
+}
+.vid:hover {
+  opacity: 0.8;
+}
+.vid:hover input {
+  display: block;
+  bottom: 0%;
+}
+.videos input {
+  position: absolute;
+  width: 6%;
+  height: 6%;
+  display: none;
+}
+input:hover{
+  opacity: 1;
+}
+.hangUp {
+  right: 0%;
+  opacity: 0.6;
+  z-index: 2;
+}
+.muteVideo {
+  right: 7%;
+  opacity: 0.6;
+  z-index: 2;
+}
+.muteAudio {
+  right: 13%;
+  opacity: 0.6;
+  z-index: 2;
+}
+.vid {
+  height: 2em;
+  width: 3em;
+  transition: all .5s;
+  z-index: 0;
+  display: none;
+}
+.setSpace {
+  top: 0%;
+  left: 0%;
+  background: white;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.videos[data-capacity="1"] .vid {
+  position: absolute;
+}
+.videos[data-capacity="1"] .vid[data-room-index="1"] {
+  width: 90%;
+  left: 5%;
+  top: 6%;
+  height: 90%;
+  display: block;
+}
+.videos[data-capacity="2"] .vid {
+  position: absolute;
+  display: none;
+  top: 6%;
+}
+@media screen and (min-aspect-ratio: 1/1) {
+  .videos[data-capacity="2"] .vid {
+    width: 45%;
+    height: 90%;
+  }
+  .videos[data-capacity="2"] .vid[data-room-index="1"] {
+    left: 3.3333%;
+    display: block;
+  }
+  .videos[data-capacity="2"] .vid[data-room-index="2"] {
+    left: 51.666%;
+    display: block;
+  }
+}
+@media screen and (max-aspect-ratio: 1/1) {
+  .videos[data-capacity="2"] .vid {
+    width: 90%;
+    height: 45%;
+  }
+  .videos[data-capacity="2"] .vid[data-room-index="1"] {
+    left: 3.3333%;
+    display: block;
+  }
+  .videos[data-capacity="2"] .vid[data-room-index="2"] {
+    left: 51.666%;
+    display: block;
+  }
+}
+.videos[data-capacity="3"] {
+  /*TODO add min and max aspec ratio*/
+}
+.videos[data-capacity="3"] .vid {
+  position: absolute;
+  display: none;
+  height: 45%;
+  width: 45%;
+}
+.videos[data-capacity="3"] .vid[data-room-index="1"] {
+  left: 28.3333%;
+  top: 53.6666%;
+  display: block;
+}
+.videos[data-capacity="3"] .vid[data-room-index="2"] {
+  top: 6%;
+  left: 3.3333%;
+  display: block;
+}
+.videos[data-capacity="3"] .vid[data-room-index="3"] {
+  top: 6%;
+  left: 51.666%;
+  display: block;
+}
+.videos[data-capacity="4"] {
+  /*TODO add max aspec ratio*/
+}
+.videos[data-capacity="4"] .vid {
+  position: absolute;
+}
+@media screen and (min-aspect-ratio: 1/1) {
+  .videos[data-capacity="4"] .vid {
+    width: 45%;
+    height: 45%;
+  }
+  .videos[data-capacity="4"] .vid[data-room-index="1"] {
+    top: 6%;
+    left: 3.3333%;
+    display: block;
+  }
+  .videos[data-capacity="4"] .vid[data-room-index="2"] {
+    top: 6%;
+    left: 51.666%;
+    display: block;
+  }
+  .videos[data-capacity="4"] .vid[data-room-index="3"] {
+    top: 53.6666%;
+    left: 3.3333%;
+    display: block;
+  }
+  .videos[data-capacity="4"] .vid[data-room-index="4"] {
+    top: 51.66666%;
+    left: 51.666%;
+    display: block;
+  }
+}
+.videos[data-capacity="5"] {
+  /*TODO add max aspec ratio*/
+}
+@media screen and (min-aspect-ratio: 1/1) {
+  .videos[data-capacity="5"] .vid {
+    position: absolute;
+    width: 30%;
+    height: 45%;
+    display: none;
+  }
+  .videos[data-capacity="5"] .vid[data-room-index="1"] {
+    left: 2%;
+    top: 6%;
+    display: block;
+  }
+  .videos[data-capacity="5"] .vid[data-room-index="2"] {
+    top: 6%;
+    left: 34%;
+    display: block;
+  }
+  .videos[data-capacity="5"] .vid[data-room-index="3"] {
+    top: 6%;
+    left: 66%;
+    display: block;
+  }
+  .videos[data-capacity="5"] .vid[data-room-index="4"] {
+    top: 53.6666%;
+    left: 16.5%;
+    display: block;
+  }
+  .videos[data-capacity="5"] .vid[data-room-index="5"] {
+    top: 53.6666%;
+    left: 53.5%;
+    display: block;
+  }
+}
+.videos[data-capacity="6"] .vid {
+  position: absolute;
+  display: block;
+}
+@media screen and (min-aspect-ratio: 1/1) {
+  .videos[data-capacity="6"] .vid {
+    width: 30%;
+    height: 45%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="1"] {
+    left: 2%;
+    top: 6%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="2"] {
+    top: 6%;
+    left: 34%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="3"] {
+    top: 6%;
+    left: 66%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="4"] {
+    top: 51.66666%;
+    left: 2%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="5"] {
+    top: 51.66666%;
+    left: 34%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="6"] {
+    top: 51.66666%;
+    left: 66%;
+  }
+}
+@media screen and (max-aspect-ratio: 1/1) {
+  .videos[data-capacity="6"] {
+    /*Needs optimizing*/
+  }
+  .videos[data-capacity="6"] .vid {
+    width: 45%;
+    height: 30%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="1"] {
+    top: 2%;
+    left: 3.3333%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="2"] {
+    left: 3.3333%;
+    top: 34%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="3"] {
+    left: 3.3333%;
+    top: 66%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="4"] {
+    left: 51.66666%;
+    top: 2%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="5"] {
+    left: 51.66666%;
+    top: 34%;
+  }
+  .videos[data-capacity="6"] .vid[data-room-index="6"] {
+    left: 51.66666%;
+    top: 66%;
+  }
+}
+/*.getsmall[data-capacity="1"] .vid[data-room-index="1"] {
+  width: 90%;
+  left: 5%;
+  top: 6%;
+  height: 90%;
+  display: block;
+}*/
+.getsmall[data-capacity="2"] .vid:not(:target) {
+  position: absolute;
+  display: none;
+  width: 15%;
+  height: 30%;
+}
+.getsmall[data-capacity="2"] .vid[data-room-index="1"] {
+  left: 0%;
+  top: 67.5%;
+  display: block;
+  /*top level vid not overriding?*/
+}
+.getsmall[data-capacity="2"] .vid[data-room-index="2"] {
+  left: 17%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="2"] .vid:target {
+  /*needs to be in each videos class tag?*/
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
+}
+.getsmall[data-capacity="3"] .vid:not(:target) {
+  position: absolute;
+  display: none;
+  width: 15%;
+  height: 30%;
+}
+.getsmall[data-capacity="3"] .vid[data-room-index="1"] {
+  left: 0%;
+  top: 67.5%;
+  display: block;
+  /*top level vid not overriding? top%*/
+}
+.getsmall[data-capacity="3"] .vid[data-room-index="2"] {
+  left: 17%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="3"] .vid[data-room-index="3"] {
+  left: 34%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="3"] .vid:target {
+  /*needs to be in each videos class tag?*/
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
+}
+.getsmall[data-capacity="4"] .vid:not(:target) {
+  position: absolute;
+  display: none;
+  width: 15%;
+  height: 30%;
+}
+.getsmall[data-capacity="4"] .vid[data-room-index="1"] {
+  left: 0%;
+  top: 67.5%;
+  display: block;
+  /*top level vid not overriding?*/
+}
+.getsmall[data-capacity="4"] .vid[data-room-index="2"] {
+  left: 17%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="4"] .vid[data-room-index="3"] {
+  left: 34%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="4"] .vid[data-room-index="4"] {
+  left: 51%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="4"] .vid:target {
+  /*needs to be in each videos class tag?*/
+
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
+}
+.getsmall[data-capacity="5"] .vid:not(:target) {
+  position: absolute;
+  display: none;
+  width: 15%;
+  height: 30%;
+}
+.getsmall[data-capacity="5"] .vid[data-room-index="1"] {
+  left: 0%;
+  top: 67.5%;
+  display: block;
+  /*top level vid not overriding?*/
+}
+.getsmall[data-capacity="5"] .vid[data-room-index="2"] {
+  left: 17%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="5"] .vid[data-room-index="3"] {
+  left: 34%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="5"] .vid[data-room-index="4"] {
+  left: 51%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="5"] .vid[data-room-index="5"] {
+  left: 68%;
+  top: 67.5%;
+  display: block;
+}
+.getsmall[data-capacity="5"] .vid:target {
+  /*needs to be in each videos class tag?*/
+
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
+}
+.getsmall[data-capacity="6"] .vid:not(:target) {
+  position: absolute;
+  display: block;
+  width: 15%;
+  height: 30%;
+}
+.getsmall[data-capacity="6"] .vid[data-room-index="1"] {
+  left: 0%;
+  top: 67.5%;
+  /*top level vid not overriding?*/
+}
+.getsmall[data-capacity="6"] .vid[data-room-index="2"] {
+  left: 17%;
+  top: 67.5%;
+}
+.getsmall[data-capacity="6"] .vid[data-room-index="3"] {
+  left: 34%;
+  top: 67.5%;
+}
+.getsmall[data-capacity="6"] .vid[data-room-index="4"] {
+  left: 51%;
+  top: 67.5%;
+}
+.getsmall[data-capacity="6"] .vid[data-room-index="5"] {
+  left: 68%;
+  top: 67.5%;
+}
+.getsmall[data-capacity="6"] .vid[data-room-index="6"] {
+  left: 85%;
+  top: 67.5%;
+}
+.getsmall[data-capacity="6"] .vid:target {
+  /*needs to be in each videos class tag?*/
+
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  width: 75%;
+  height: 60%;
+}

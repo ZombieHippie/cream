@@ -1,0 +1,519 @@
+/*Room.less kept for reference. Delete for final project*/
+//******************************
+.room-top-bar {
+  width: 100%;
+  padding: 1em;
+  background: #111;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+.room-top-bar .room-title {
+  font-size: 16px;
+  display: inline-block;
+}
+
+.room-top-bar .is-admin {
+  width: 16px;
+  height: 16px;
+  background: gold;
+  display:inline-block;
+  margin-left: 10vw;
+}
+
+.room-top-bar .is-private {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.action-buttons {
+  position: absolute;
+  left: 0;
+  top: .5em;
+  width: 100%;
+  text-align: center;
+  z-index: 900;
+}
+
+/* While video is loading */
+video {
+  background-image: url(/images/background.gif);
+  background-size: cover;
+}
+
+/* EASY RTC STYLES vvv */
+
+.transit {
+    transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, transform 1s;
+    -moz-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -moz-transform 1s;
+    -webkit-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -webkit-transform 1s;
+    -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
+}
+
+body .dynamic-view, body .page {
+  padding: 0px;
+  height:100%;
+  width:100%;
+  text-align: center;
+}
+
+/*Begin new css---------------------------------------------------------------*/
+body {
+  margin: auto;
+}
+
+#revertView{
+  right:2%;
+  top:2%;
+  height:5%;
+  width:5%;
+  display:none;
+}
+
+.videos {
+  /*position: absolute;*/
+  background: #dbdbdb;
+  height: 100%;
+  width: 100%;
+}
+.vid:hover{
+  opacity:0.8;
+}
+
+.vid:hover input {
+  display:block;
+  bottom: 0%;
+}
+
+.videos input {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  display:none;
+}
+
+.vid input.hangUp{
+  right:0%;
+}
+.vid input.muteVideo{
+  right:17%;
+}
+.vid input.muteAudio{
+  right:34%;
+}
+
+.vid {
+  background: #233333;
+  height: 2em;
+  width: 3em;
+  border: solid red 1px;
+  transition: all .5s;
+  z-index: 0;
+  display: block;
+}
+/*.vid:target{
+  need to resize target to be big
+  and resize others to be small.
+
+  Needs to be in videos tag
+  background: lawngreen;
+  width: 100%;
+  height:100%;
+}
+*/
+
+/*.videos .vid:target{
+  background: blue;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 75%;
+  height:60%;
+}*/
+
+
+.setSpace{
+  top: 0%;
+  left: 0%;
+  height:100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.videos[data-capacity="1"] {
+  .vid {
+    position: absolute;
+  }
+  .vid:nth-child(1) {
+    width: 90%;
+    left: 5%;
+    top: 5%;
+    height: 90%;
+    display: block;
+  }
+  .vid:target{
+    background: blue;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 75%;
+    height:60%;
+  }
+}
+
+.videos[data-capacity="2"] {
+  .vid {
+    position: absolute;
+    border-color: blue;
+    top: 5%;
+    display: block;
+  }
+  @media screen and (min-aspect-ratio: 1/1) {
+    .vid {
+      width: 45%;
+      height: 90%;
+    }
+    .vid:nth-child(1) {
+      left: 3.3333%;
+    }
+    .vid:nth-child(2) {
+      left: 51.666%;
+    }
+  }
+  @media screen and (max-aspect-ratio: 1/1) {
+    .vid {
+      width: 90%;
+      height: 45%;
+    }
+    .vid:nth-child(1) {
+      left: 3.3333%;
+    }
+    .vid:nth-child(2) {
+      left: 51.666%;
+    }
+  }
+}
+
+.videos[data-capacity="3"] {
+  /*TODO add min and max aspec ratio*/
+  .vid {
+    position: absolute;
+    border-color: blue;
+    display: block;
+    height: 45%;
+    width:45%;
+  }
+  .vid:nth-child(1) {
+    left: 28.3333%;
+    top: 51.6666%;
+  }
+  .vid:nth-child(2) {
+    top: 3.3333%;
+    left: 3.3333%;
+  }
+  .vid:nth-child(3) {
+    top: 3.3333%;
+    left: 51.666%;
+  }
+}
+
+.videos[data-capacity="4"] {
+  /*TODO add max aspec ratio*/
+  .vid {
+    position: absolute;
+    border-color: blue;
+    display: block;
+  }
+  @media screen and (min-aspect-ratio: 1/1) {
+    .vid {
+      width: 45%;
+      height: 45%;
+    }
+    .vid:nth-child(1) {
+      top: 3.3333%;
+      left: 3.3333%;
+    }
+    .vid:nth-child(2) {
+      top: 3.3333%;
+      left: 51.666%;
+    }
+    .vid:nth-child(3) {
+      top: 51.6666%;
+      left: 3.3333%;
+    }
+    .vid:nth-child(4) {
+      top: 51.66666%;
+      left: 51.666%;
+    }
+  }
+}
+
+.videos[data-capacity="5"] {
+  /*TODO add max aspec ratio*/
+   @media screen and (min-aspect-ratio: 1/1) {
+    .vid {
+      position: absolute;
+      border-color: blue;
+      width: 30%;
+      height: 45%;
+      display: block;
+    }
+    .vid:nth-child(1) {
+      left: 2%;
+      top: 3.3333%;
+    }
+    .vid:nth-child(2) {
+      top: 3.3333%;
+      left: 34%;
+    }
+    .vid:nth-child(3) {
+      top: 3.3333%;
+      left: 66%;
+    }
+    .vid:nth-child(4) {
+      top: 51.6666%;
+      left: 16.5%;
+    }
+    .vid:nth-child(5) {
+      top: 51.6666%;
+      left: 53.5%;
+    }
+  }
+}
+
+.videos[data-capacity="6"] {
+  .vid {
+    position: absolute;
+    display: block;
+  }
+  @media screen and (min-aspect-ratio: 1/1) {
+    .vid {
+      width: 30%;
+      height: 45%;
+    }
+    .vid:nth-child(1) {
+      left: 2%;
+      top: 3.3333%;
+    }
+    .vid:nth-child(2) {
+      top: 3.3333%;
+      left: 34%;
+    }
+    .vid:nth-child(3) {
+      top: 3.3333%;
+      left: 66%;
+    }
+    .vid:nth-child(4) {
+      top: 51.66666%;
+      left: 2%;
+    }
+     .vid:nth-child(5) {
+      top: 51.66666%;
+      left: 34%;
+    }
+     .vid:nth-child(6) {
+      top: 51.66666%;
+      left: 66%;
+    }
+  }
+  @media screen and (max-aspect-ratio: 1/1) {
+    /*Needs optimizing*/
+    .vid {
+      width: 45%;
+      height: 30%;
+
+    }
+    .vid:nth-child(1) {
+      top: 2%;
+      left: 3.3333%;
+    }
+    .vid:nth-child(2) {
+      left: 3.3333%;
+      top: 34%;
+    }
+    .vid:nth-child(3) {
+      left: 3.3333%;
+      top: 66%;
+    }
+    .vid:nth-child(4) {
+      left: 51.66666%;
+      top: 2%;
+    }
+     .vid:nth-child(5) {
+      left: 51.66666%;
+      top: 34%;
+    }
+     .vid:nth-child(6) {
+      left: 51.66666%;
+      top: 66%;
+    }
+  }
+}
+
+
+.getsmall[data-capacity="2"] {
+  .vid:not(:target) {
+    position: absolute;
+    display: block;
+    width: 15%;
+    height: 30%;
+  }
+  .vid:nth-child(1) {
+    left: 0%;
+    top: 67.5%; /*top level vid not overriding?*/
+  }
+  .vid:nth-child(2) {
+    left: 17%;
+    top: 67.5%;
+  }
+  .vid:target{
+      /*needs to be in each videos class tag?*/
+      background: blue;
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      width: 75%;
+      height:60%;
+  }
+}
+.getsmall[data-capacity="3"] {
+  .vid:not(:target) {
+    position: absolute;
+    display: block;
+    width: 15%;
+    height: 30%;
+  }
+  .vid:nth-child(1) {
+    left: 0%;
+    top: 67.5%; /*top level vid not overriding?*/
+  }
+  .vid:nth-child(2) {
+    left: 17%;
+    top: 67.5%;
+  }
+  .vid:nth-child(3) {
+    left: 34%;
+    top: 67.5%;
+  }
+  .vid:target{
+      /*needs to be in each videos class tag?*/
+      background: blue;
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      width: 75%;
+      height:60%;
+  }
+}
+.getsmall[data-capacity="4"] {
+  .vid:not(:target) {
+    position: absolute;
+    display: block;
+    width: 15%;
+    height: 30%;
+  }
+  .vid:nth-child(1) {
+    left: 0%;
+    top: 67.5%; /*top level vid not overriding?*/
+  }
+  .vid:nth-child(2) {
+    left: 17%;
+    top: 67.5%;
+  }
+  .vid:nth-child(3) {
+    left: 34%;
+    top: 67.5%;
+  }
+  .vid:nth-child(4) {
+    left: 51%;
+    top: 67.5%;
+  }
+  .vid:target{
+      /*needs to be in each videos class tag?*/
+      background: blue;
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      width: 75%;
+      height:60%;
+  }
+}
+.getsmall[data-capacity="5"] {
+  .vid:not(:target) {
+    position: absolute;
+    display: block;
+    width: 15%;
+    height: 30%;
+  }
+  .vid:nth-child(1) {
+    left: 0%;
+    top: 67.5%; /*top level vid not overriding?*/
+  }
+  .vid:nth-child(2) {
+    left: 17%;
+    top: 67.5%;
+  }
+  .vid:nth-child(3) {
+    left: 34%;
+    top: 67.5%;
+  }
+  .vid:nth-child(4) {
+    left: 51%;
+    top: 67.5%;
+  }
+  .vid:nth-child(5) {
+    left: 68%;
+    top: 67.5%;
+  }
+  .vid:target{
+      /*needs to be in each videos class tag?*/
+      background: blue;
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      width: 75%;
+      height:60%;
+  }
+}
+.getsmall[data-capacity="6"] {
+  .vid:not(:target) {
+    position: absolute;
+    display: block;
+    width: 15%;
+    height: 30%;
+  }
+  .vid:nth-child(1) {
+    left: 0%;
+    top: 67.5%; /*top level vid not overriding?*/
+  }
+  .vid:nth-child(2) {
+    left: 17%;
+    top: 67.5%;
+  }
+  .vid:nth-child(3) {
+    left: 34%;
+    top: 67.5%;
+  }
+  .vid:nth-child(4) {
+    left: 51%;
+    top: 67.5%;
+  }
+  .vid:nth-child(5) {
+    left: 68%;
+    top: 67.5%;
+  }
+  .vid:nth-child(6) {
+    left: 85%;
+    top: 67.5%;
+  }
+  .vid:target{
+      /*needs to be in each videos class tag?*/
+      background: blue;
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      width: 75%;
+      height:60%;
+  }
+}
