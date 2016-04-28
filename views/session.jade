@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  style body { backgroun: #defff2; }
+  h1 Session
+  form.form-inline(method="post")
+    fieldset.form-group
+      input.form-control(name="name" placeholder="What is your name?")
+      input.btn.btn-primary.form-control(type="submit")
+  pre(style="text-align:left;") #{JSON.stringify(session,null,2)}
