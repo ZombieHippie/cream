@@ -16,11 +16,7 @@ body {
   margin: auto;
 }
 #revertView {
-  right: 0%;
-  bottom: 0%;
-  height: 5%;
-  width: 3.5%;
-  display: none;
+  visibility: hidden;
 }
 .videos {
   /*position: absolute;*/
@@ -116,7 +112,8 @@ input:hover{
     display: block;
   }
   .videos[data-capacity="2"] .vid[data-room-index="2"] {
-    left: 51.666%;
+    left: 3.3333%;
+    top: 53.6666%;
     display: block;
   }
 }
