@@ -86,21 +86,21 @@ npm test
 16. Here is where we add the environmental variables.
 17. You will put these "Keys" in with their corresponding "Value"
 18. For the Mongo DB, the easiest way will be to copy the line under the "To connect using a driver via the standard MongoDB URI" after the "mongodb://" part. This is on the mLab website you went to in step 10. Here is what you should have copied (this is my database, bolded parts may be different for you):
-	<dbuser>:<dbpassword>@**ds064748**.mlab.com:**<dbport>/<dbname>**
+	(dbuser):(dbpassword)@**ds064748**.mlab.com:**(dbport)/(dbname)**
 
 ```
-Key			    |	Value
-NO_SSL		  |	1
-MONGODB_HOST|	<dbuser>:<dbpassword>@ds064748.mlab.com
-MONGODB_DB	|	<dbname>
-MONGODB_PORT|	<dbport>
+Key			  |	Value
+NO_SSL		 |	1
+MONGODB_HOST|	(dbuser):(dbpassword)@ds064748.mlab.com
+MONGODB_DB	|	(dbname)
+MONGODB_PORT|	(dbport)
 ```
 
-* <dbuser> and <dbpassword> is the username and password you created in step 11.
-* <dbname> is the name you gave your database in step 7. Also found in the line of text you copied.
-* <dbport> is the port the database uses. You can find this in the line of text you copied.
+* (dbuser) and (dbpassword) is the username and password you created in step 11.
+* (dbname) is the name you gave your database in step 7. Also found in the line of text you copied.
+* (dbport) is the port the database uses. You can find this in the line of text you copied.
 
-19. Once that is completed click "Save" at the top of the "Application settings" page in Azure.
+Once that is completed click "Save" at the top of the "Application settings" page in Azure.
 
 Congratulations!
 Now that you have completed all of that you should be done! Now you can make code changes to your own repository and Azure should automatically update your website.
