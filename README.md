@@ -3,6 +3,10 @@
 | ------------- |:-------------:|
 | [![master branch](https://travis-ci.org/ZombieHippie/cream.svg?branch=master)](https://travis-ci.org/ZombieHippie/cream/branches) | [![develop branch](https://travis-ci.org/ZombieHippie/cream.svg?branch=develop)](https://travis-ci.org/ZombieHippie/cream/branches) |
 
+## Presentations
+
+* [Demo 04 - Test Plan](https://docs.google.com/presentation/d/1lZNehuVv-Wu1LjkNz4hj5ebNvVpZn6-D91BN4LBBG3Q/edit?usp=sharing)
+
 ## Screenshots
 ![Lobby](documentation/screenshots/84af2ac-lobby.PNG)
 ![Lobby Create Room](documentation/screenshots/84af2ac-lobby-create-room.PNG)
@@ -88,13 +92,12 @@ npm test
 18. For the Mongo DB, the easiest way will be to copy the line under the "To connect using a driver via the standard MongoDB URI" after the "mongodb://" part. This is on the mLab website you went to in step 10. Here is what you should have copied (this is my database, bolded parts may be different for you):
 	(dbuser):(dbpassword)@**ds064748**.mlab.com:**(dbport)/(dbname)**
 
-```
-Key			  |	Value
-NO_SSL		 |	1
-MONGODB_HOST|	(dbuser):(dbpassword)@ds064748.mlab.com
-MONGODB_DB	|	(dbname)
-MONGODB_PORT|	(dbport)
-```
+| Key		|	Value |
+|:------------- |:-------------:|
+| NO_SSL	|	1 |
+| MONGODB_HOST	| (dbuser):(dbpassword)@ds064748.mlab.com |
+| MONGODB_DB	|	(dbname) |
+| MONGODB_PORT	|	(dbport) |
 
 * (dbuser) and (dbpassword) is the username and password you created in step 11.
 * (dbname) is the name you gave your database in step 7. Also found in the line of text you copied.
