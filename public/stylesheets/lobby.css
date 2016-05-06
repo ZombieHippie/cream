@@ -1,4 +1,17 @@
 
+
+.lobby-rooms th:nth-child(1),
+.lobby-rooms td:nth-child(1){
+  width: auto;
+}
+.lobby-rooms th:nth-child(2),
+.lobby-rooms td:nth-child(2){
+  width: 2em;
+}
+.lobby-rooms th:nth-child(3),
+.lobby-rooms td:nth-child(3){
+  width: 2em;
+}
 .lobby-header {
   padding: 4px;
   text-align: left;

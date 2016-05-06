@@ -1,8 +1,8 @@
 extends layout
 
 block head
-  link(rel='stylesheet' href='/stylesheets/lobby.css')
   link(rel='stylesheet' href='/stylesheets/tablesorting.css')
+  link(rel='stylesheet' href='/stylesheets/lobby.css')
 
 block content
   .lobby-header
@@ -13,12 +13,12 @@ block content
       a.btn.btn-primary(href="#create-room" role="button") Create Room
 
   div
-    table(data-toggle='table', data-sort-name='name', data-sort-order='asc')
+    table.lobby-rooms(data-toggle='table', data-sort-name='name', data-sort-order='asc')
       thead
         tr
           th(data-field='name', data-sortable='true') Name
-          th(style="width: 2em;", data-field='capacity_size', data-sortable='true') Capacity
-          th(style="width: 1em;", data-field='privacy_check', data-sortable='true') Private
+          th(data-field='capacity_size', data-sortable='true') Capacity
+          th(data-field='privacy_check', data-sortable='true') Private
       tbody
         each room in rooms
           tr(class=(room.capacity > 1 ? '': 'table-warning'))

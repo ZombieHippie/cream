@@ -3,6 +3,7 @@ extends layout
 block head
   link(rel='stylesheet' href='/easyrtc-api/easyrtc.css')
   link(rel='stylesheet' href='/stylesheets/room.css')
+  link(rel='stylesheet' href='/stylesheets/video.css')
 
 block content
   .room-top-bar
@@ -12,6 +13,8 @@ block content
   .dynamic-view
     include dynamic-view
   .action-buttons
+    a#revertView.btn.btn-secondary(role="button" onClick="revert()") Revert View
+    | &nbsp;
     a.btn.btn-secondary(role="button" href="/lobby") Leave Room
   
 block javascript
