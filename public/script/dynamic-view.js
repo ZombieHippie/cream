@@ -1,3 +1,5 @@
+//dynamic-view.js is the underlying javascript file for the room functions
+//Peers are added to the call here and views are updated
 
 var maxCALLERS = 5;
 var numVideoOBJS = maxCALLERS+1;
@@ -14,22 +16,24 @@ function changeView(){
 }
 //End video functions------------------------------------------------
 
+//hangs up on all people in the room. Not needed atm
 function getKicked(){
   easyrtc.hangupAll();
 }
 easyrtc.dontAddCloseButtons(true);
 
+//returns the videoID
 function getIdOfBox(boxNum) {
     return "video" + boxNum;
 }
 
+//used for dynamically allocating streams to video tags
 var boxUsed = [true, false, false, false, false, false];
 var connectCount = 0;
 
 function muteAudio(muteButton) {
   // See EasyRTC "enableMicrophone(enable)" and "enableVideo(enabled)"
     var id = muteButton.id;
-    //if( activeBox > 0) { // no kill button for self video
     id = parseInt(id);
     var videoObject = document.getElementById( getIdOfBox(id));
     var isMuted = videoObject.muted?true:false;
@@ -38,7 +42,8 @@ function muteAudio(muteButton) {
     muteButton.src = isMuted?"../images/muted.svg":"../images/audio.svg";
     //}
 }
-function muteVideo(muteButton) { //currently also mutes sound. find a way around this maybe just hide the video tag?
+//just hides video tag. .pause() and .play() freezes frame, but also mutes audio
+function muteVideo(muteButton) {
     var id = muteButton.id;
     id = parseInt(id);
     var videoObject = document.getElementById( getIdOfBox(id));
@@ -55,11 +60,15 @@ function muteVideo(muteButton) { //currently also mutes sound. find a way around
     }
     muteButton.src = paused?"../images/videomute.svg":"../images/video.svg";
 }
+
+//just redirects to the home page
 function hangUp2(){
   window.location = "/lobby"; //testing
-  //window.location = "https://creamstream.azurewebsites.net";
 }
-//hangUp is not needed at the moment.
+
+//hangUp hangs up the video with a certain person.
+//Other people will still be able to see that person unless they also hang up on
+//them. We need a boot function
 function hangUp(element) {
   var id = element.id
   id = parseInt(id)
@@ -111,7 +120,7 @@ function callEverybodyElse(roomName, otherPeople) {
     }
 }
 
-
+//required for calling
 function loginSuccess() {
     console.log("Connecting...");
 }
@@ -123,6 +132,7 @@ function appInit(id) {
       //host user should be muted and doesn't need the option to unmute
       document.getElementById("video0").muted = "muted";
       document.getElementById("0muteaudio").style.display = "none";
+      document.getElementById("0hangup").style.display = "none";
       updateCapacity();
     }
 
@@ -164,7 +174,7 @@ function appInit(id) {
 
             if( easyrtc.getConnectionCount() == 0 ) { // no more connections
                 //No more connections to the host. Host could still be in room
-                //Close the room here.
+                //Close the room here. If we can detect the host leaving
 
             }
         },20);
