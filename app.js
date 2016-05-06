@@ -10,7 +10,7 @@ var room = require('./routes/room');
 var rootRoom = require('./routes/root-room');
 var lobby = require('./routes/lobby');
 
-require('./lib/database').connect()
+var mongo_uri = require('./lib/database').connect()
 
 var app = express();
 
@@ -26,6 +26,9 @@ if (!process.env.DISABLE_MORGAN) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(require('./lib/mongo-session')(mongo_uri))
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/easyrtc-api', express.static(path.join(__dirname, 'node_modules/easyrtc/api')));
 app.use('/socketio-api', express.static(path.join(__dirname, '/node_modules/socket.io/')));
@@ -33,6 +36,7 @@ app.use('/socketio-api', express.static(path.join(__dirname, '/node_modules/sock
 app.use('/lobby', lobby);
 app.use('/r', rootRoom);
 app.use('/room', room);
+app.use('/session', require('./routes/session'));
 app.use('/', index);
 
 // catch 404 and forward to error handler
