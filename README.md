@@ -1,7 +1,7 @@
 # Cream
 | master        | develop       |
 | ------------- |:-------------:|
-| [![master branch](https://travis-ci.org/ZombieHippie/cream.svg?branch=master)](https://travis-ci.org/ZombieHippie/cream/branches) | [![develop branch](https://travis-ci.org/ZombieHippie/cream.svg?branch=develop)](https://travis-ci.org/ZombieHippie/cream/branches) |
+| [![master branch](https://travis-ci.org/colelawrence/cream.svg?branch=master)](https://travis-ci.org/colelawrence/cream/branches) | [![develop branch](https://travis-ci.org/colelawrence/cream.svg?branch=develop)](https://travis-ci.org/colelawrence/cream/branches) |
 
 ## Presentations
 
